@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_IiUTECspEeqIwr50XatQew">
+  <modelElement href="IMS-Backend.uml#_tWgzoCspEeqIwr50XatQew"/>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_tbvR4CspEeqIwr50XatQew" name="User">
+    <modelElement href="IMS-Backend.uml#_tWqkoCspEeqIwr50XatQew"/>
+    <visualProperties xmi:id="_tbvR4SspEeqIwr50XatQew" position="133.0,76.0"/>
+    <stereotypes xmi:id="_tbvR4ispEeqIwr50XatQew" name="Entity">
+      <modelElement href="IMS-Backend.uml#_tWsZ0CspEeqIwr50XatQew"/>
+    </stereotypes>
+    <stereotypes xmi:id="_tbvR4yspEeqIwr50XatQew" name="JPA1StyledElement">
+      <modelElement href="IMS-Backend.uml#_tWtn8CspEeqIwr50XatQew"/>
+    </stereotypes>
+    <visibility xmi:id="_tbvR5CspEeqIwr50XatQew" label="+"/>
+    <attributes xmi:id="_tbvR5SspEeqIwr50XatQew" name="password">
+      <modelElement href="IMS-Backend.uml#_tXUr8CspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvR5ispEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tXZkcCspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvR5yspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvR6CspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvR6SspEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvR6ispEeqIwr50XatQew" name="id">
+      <modelElement href="IMS-Backend.uml#_tXaykCspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvR6yspEeqIwr50XatQew" name="LegacyStyledElement">
+        <modelElement href="IMS-Backend.uml#_tXbZoCspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvR7CspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvR7SspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvR7ispEeqIwr50XatQew" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvR7yspEeqIwr50XatQew" name="manager">
+      <modelElement href="IMS-Backend.uml#_tXpcEispEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvR8CspEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tXu7oCspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvR8SspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvR8ispEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvR8yspEeqIwr50XatQew" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvR9CspEeqIwr50XatQew" name="firstName">
+      <modelElement href="IMS-Backend.uml#_tXwJwCspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvR9SspEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tX2QYCspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvR9ispEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvR9yspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvR-CspEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvR-SspEeqIwr50XatQew" name="lastName">
+      <modelElement href="IMS-Backend.uml#_tX3egCspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvR-ispEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tX8-ECspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvR-yspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvR_CspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvR_SspEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvR_ispEeqIwr50XatQew" name="userId">
+      <modelElement href="IMS-Backend.uml#_tX9lICspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvR_yspEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tYDEsCspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvSACspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvSASspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvSAispEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvSAyspEeqIwr50XatQew" name="email">
+      <modelElement href="IMS-Backend.uml#_tYDrwCspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvSBCspEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tYJLUCspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvSBSspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvSBispEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvSByspEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvSCCspEeqIwr50XatQew" name="userName">
+      <modelElement href="IMS-Backend.uml#_tYJyYCspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvSCSspEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tYP5ACspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvSCispEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvSCyspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvSDCspEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_tbvSDSspEeqIwr50XatQew" name="encryptedPassword">
+      <modelElement href="IMS-Backend.uml#_tYQgECspEeqIwr50XatQew"/>
+      <stereotypes xmi:id="_tbvSDispEeqIwr50XatQew" name="Column">
+        <modelElement href="IMS-Backend.uml#_tYX00CspEeqIwr50XatQew"/>
+      </stereotypes>
+      <visibility xmi:id="_tbvSDyspEeqIwr50XatQew" label="+"/>
+      <cardinality xmi:id="_tbvSECspEeqIwr50XatQew" label="1" max="1" min="1"/>
+      <type xmi:id="_tbvSESspEeqIwr50XatQew" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>
