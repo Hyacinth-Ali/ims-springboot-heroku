@@ -63,6 +63,11 @@ public class UserController {
 //		return returnValue;
 //	}
 	
+	@PostMapping("/createuser")
+	public String createUser() {
+		return "A user is created inside Create User.";
+	}
+	
 	/**
 	 * RequestBody: to enable this method read json or xml data from a 
 	 * web request
