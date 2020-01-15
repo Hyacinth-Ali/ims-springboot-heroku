@@ -3,6 +3,7 @@ package com.ali.hyacinth.ims.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import com.ali.hyacinth.ims.repository.UserRepository;
 import com.ali.hyacinth.ims.service.UserService;
 import com.ali.hyacinth.ims.shared.GenerateId;
 import com.ali.hyacinth.ims.shared.Utils;
+import com.ali.hyacinth.ims.shared.dto.AddressDTO;
 import com.ali.hyacinth.ims.shared.dto.UserDto;
 
 @Service
@@ -47,9 +49,17 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("Records already exist");
 		}
 		
-		User user = new User();
+		for (int i = 0; i < userDto.getAddresses().size(); i++) {
+			AddressDTO address = userDto.getAddresses().get(i);
+			address.setUserDetails(userDto);
+			address.setAddressId(utils.generateAddressId(30));
+			userDto.getAddresses().set(i, address);
+		}
+
+		ModelMapper modelMapper = new ModelMapper();
+		User user = modelMapper.map(userDto, User.class);
+		
 		user.setManager(false);
-		BeanUtils.copyProperties(userDto, user);
 		String publicUserId = utils.generateUserId(30);
 		user.setUserId(publicUserId);
 		user.setEncryptedPassword("testpassword");
@@ -58,9 +68,7 @@ public class UserServiceImpl implements UserService {
 
 		User storedEmployee = userRepository.save(user);
 
-		UserDto returnValue = new UserDto();
-
-		BeanUtils.copyProperties(storedEmployee, returnValue);
+		UserDto returnValue = modelMapper.map(storedEmployee, UserDto.class);
 
 		return returnValue;
 

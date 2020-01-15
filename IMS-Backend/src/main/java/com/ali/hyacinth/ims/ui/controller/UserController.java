@@ -51,18 +51,6 @@ public class UserController {
 		return returnValue;
 	}
 	
-	//TODO: To be fully implemented 
-//	@GetMapping(path="/{userName}")
-//	public UserRest login(@PathVariable String userName, @PathVariable String password) {
-//		
-//		UserRest returnValue = new UserRest();
-//		UserDto employeeDto = userService.getEmployeeByUserId(userName);
-//		
-//		BeanUtils.copyProperties(employeeDto, returnValue);
-//		
-//		return returnValue;
-//	}
-	
 	@PostMapping("/createuser")
 	public String createUser() {
 		return "A user is created inside Create User.";
@@ -88,14 +76,12 @@ public class UserController {
 		}
 		UserRest returnValue = new UserRest();
 		
-		//UserDto userDto = new UserDto();
-		//BeanUtils.copyProperties(userDetails, userDto);
-		
 		ModelMapper modelMapper = new ModelMapper();
 		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
 		
 		UserDto createEmployee = userService.createEmployee(userDto);
-		BeanUtils.copyProperties(createEmployee, returnValue);
+
+		returnValue = modelMapper.map(createEmployee, UserRest.class);
 		
 		return returnValue;
 	}

@@ -1,5 +1,10 @@
 package com.ali.hyacinth.ims.model;
+import javax.persistence.OneToMany;
 
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +12,17 @@ import javax.persistence.Id;
 
 @Entity(name = "users")
 public class User {
+private List<Address> addresses;
+
+@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+public List<Address> getAddresses() {
+   return this.addresses;
+}
+
+public void setAddresses(List<Address> addresss) {
+   this.addresses = addresss;
+}
+
 	private String password;
 
 	public void setPassword(String value) {
