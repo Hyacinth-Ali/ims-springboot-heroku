@@ -90,16 +90,16 @@ public class Address implements Serializable {
 		return this.type;
 	}
 
-	private User user;
+	private Employee employee;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "users_id")
-	public User getUser() {
-		return this.user;
+	public Employee getEmployee() {
+		return this.employee;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setEmployee(Employee user) {
+		this.employee = user;
 	}
 
 	private static final long serialVersionUID = -5606520411628590064L;

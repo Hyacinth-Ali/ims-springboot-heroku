@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.model.User;
 import com.ali.hyacinth.ims.repository.UserRepository;
-import com.ali.hyacinth.ims.service.UserService;
+import com.ali.hyacinth.ims.service.EmployeeService;
 import com.ali.hyacinth.ims.shared.GenerateId;
 import com.ali.hyacinth.ims.shared.Utils;
 import com.ali.hyacinth.ims.shared.dto.AddressDTO;
-import com.ali.hyacinth.ims.shared.dto.UserDto;
+import com.ali.hyacinth.ims.shared.dto.EmployeeDto;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements EmployeeService {
 
 	@Autowired
 	Utils utils;
@@ -30,34 +30,32 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	
-
 	/**
 	 * Create an object of an employee when the person does not exist.
 	 * 
-	 * @param UserDto the details of the new employee
+	 * @param EmployeeDto the details of the new employee
 	 * @param person     to be associated with the manager.
 	 * @throws InvalidInputException
 	 */
 	@Override
-	public UserDto createEmployee(UserDto userDto) {
+	public EmployeeDto createEmployee(EmployeeDto employeeDto) {
 		
 		//TODO:
 		//IMS ims = IMSApplication.getIms();
 		
-		if (userRepository.findByEmail(userDto.getEmail()) != null) {
+		if (userRepository.findByEmail(employeeDto.getEmail()) != null) {
 			throw new RuntimeException("Records already exist");
 		}
 		
-		for (int i = 0; i < userDto.getAddresses().size(); i++) {
-			AddressDTO address = userDto.getAddresses().get(i);
-			address.setUserDetails(userDto);
+		for (int i = 0; i < employeeDto.getAddresses().size(); i++) {
+			AddressDTO address = employeeDto.getAddresses().get(i);
+			address.setUserDetails(employeeDto);
 			address.setAddressId(utils.generateAddressId(30));
-			userDto.getAddresses().set(i, address);
+			employeeDto.getAddresses().set(i, address);
 		}
 
 		ModelMapper modelMapper = new ModelMapper();
-		User user = modelMapper.map(userDto, User.class);
+		User user = modelMapper.map(employeeDto, User.class);
 		
 		user.setManager(false);
 		String publicUserId = utils.generateUserId(30);
@@ -68,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
 		User storedEmployee = userRepository.save(user);
 
-		UserDto returnValue = modelMapper.map(storedEmployee, UserDto.class);
+		EmployeeDto returnValue = modelMapper.map(storedEmployee, EmployeeDto.class);
 
 		return returnValue;
 
@@ -94,7 +92,7 @@ public class UserServiceImpl implements UserService {
 //	}
 	
 	@Override
-	public UserDto updateUser(String userId, UserDto userDto) {
+	public EmployeeDto updateUser(String userId, EmployeeDto employeeDto) {
 		
 		User user = userRepository.findByUserId(userId);
 		
@@ -102,10 +100,10 @@ public class UserServiceImpl implements UserService {
 			throw new InvalidInputException("User doesn't exist");
 		}
 		
-		UserDto returnValue = new UserDto();
+		EmployeeDto returnValue = new EmployeeDto();
 		
-		user.setFirstName(userDto.getFirstName());
-		user.setLastName(userDto.getLastName());
+		user.setFirstName(employeeDto.getFirstName());
+		user.setLastName(employeeDto.getLastName());
 		
 		User storedUser = userRepository.save(user);
 		
@@ -116,18 +114,25 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
+	/**
+	 * Retrieve a given employee with his public id
+	 * @param employeeDto TODO
+	 * @param userName user name of the employee
+	 * 
+	 * @return the employee
+	 */
 	@Override
-	public UserDto getEmployeeByUserId(String userId, UserDto userDto) {
+	public EmployeeDto getEmployeeByUserId(String userId, EmployeeDto employeeDto) {
 		
-		UserDto returnValue = new UserDto();
+		EmployeeDto returnValue = new EmployeeDto();
 		User user = userRepository.findByUserId(userId);
 		if (user == null) {
 			throw new RuntimeException("Wrong credentials");
 		}
-		if (!user.getUserName().equals(userDto.getUserName())) {
+		if (!user.getUserName().equals(employeeDto.getUserName())) {
 			throw new RuntimeException("incorrect user name");
 		}
-		if (!user.getPassword().equals(userDto.getPassword())) {
+		if (!user.getPassword().equals(employeeDto.getPassword())) {
 			throw new RuntimeException("incorrect password");
 		}
 		//TODO:
@@ -140,9 +145,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional
 	@Override
-	public void deleteUser(String userId) {
+	public void deleteEmployee(String employeeId) {
 		
-		User user = userRepository.findByUserId(userId);
+		User user = userRepository.findByUserId(employeeId);
 		
 		if (user == null) {
 			throw new InvalidInputException("User doesn't exist");
@@ -153,22 +158,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserDto> getUsers(int page, int limit) {
+	public List<EmployeeDto> getUsers(int page, int limit) {
 		
 		if (page > 0) {
 			page = page - 1;
 		}
 
-		List<UserDto> returnValue = new ArrayList<>();
+		List<EmployeeDto> returnValue = new ArrayList<>();
 		
 		Pageable pageableRequest = PageRequest.of(page, limit);
 		Page<User> userPage = userRepository.findAll(pageableRequest);
 		List<User> users = userPage.getContent();
 		
 		for (User user : users) {
-			UserDto userDto = new UserDto();
-			BeanUtils.copyProperties(user, userDto);
-			returnValue.add(userDto);
+			EmployeeDto employeeDto = new EmployeeDto();
+			BeanUtils.copyProperties(user, employeeDto);
+			returnValue.add(employeeDto);
 		}
 		return returnValue;
 	}

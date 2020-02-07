@@ -1,5 +1,7 @@
 package com.ali.hyacinth.ims.ui.response;
 
+import java.util.List;
+
 public class UserRest {
 
 	private String firstName;
@@ -7,6 +9,7 @@ public class UserRest {
 	private String userName;
 	private String email;
 	private String userId;
+	private List<AddressRest> addresses;
 
 	public String getFirstName() {
 		return firstName;
@@ -47,6 +50,16 @@ public class UserRest {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	public List<AddressRest> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressRest> addresses) {
+		this.addresses = addresses;
+	}
+	
+	
 	
 	
 

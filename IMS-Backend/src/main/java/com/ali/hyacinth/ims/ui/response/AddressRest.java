@@ -1,8 +1,9 @@
-package com.ali.hyacinth.ims.shared.dto;
+package com.ali.hyacinth.ims.ui.response;
 
-public class AddressDTO {
+import com.ali.hyacinth.ims.shared.dto.EmployeeDto;
 
-	private long id;
+public class AddressRest {
+
 	private String addressId;
 	private String city;
 	private String country;
@@ -11,12 +12,12 @@ public class AddressDTO {
 	private String type;
 	private EmployeeDto userDetails;
 
-	public long getId() {
-		return id;
+	public String getAddressId() {
+		return addressId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setAddressId(String addressId) {
+		this.addressId = addressId;
 	}
 
 	public String getCity() {
@@ -66,15 +67,5 @@ public class AddressDTO {
 	public void setUserDetails(EmployeeDto userDetails) {
 		this.userDetails = userDetails;
 	}
-
-	public String getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(String addressId) {
-		this.addressId = addressId;
-	}
-	
-	
 
 }

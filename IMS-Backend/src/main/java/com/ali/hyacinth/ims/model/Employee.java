@@ -1,4 +1,5 @@
 package com.ali.hyacinth.ims.model;
+
 import javax.persistence.OneToMany;
 
 import java.util.List;
@@ -10,18 +11,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name = "users")
-public class User {
-private List<Address> addresses;
+@Entity(name = "employees")
+public class Employee {
+	private String customerId;
 
-@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
-public List<Address> getAddresses() {
-   return this.addresses;
-}
+	public void setCustomerId(String value) {
+		this.customerId = value;
+	}
 
-public void setAddresses(List<Address> addresss) {
-   this.addresses = addresss;
-}
+	@Column(nullable = false)
+	public String getCustomerId() {
+		return this.customerId;
+	}
+
+	private Set<Transaction> sales;
+
+	@OneToMany(mappedBy = "seller")
+	public Set<Transaction> getSales() {
+		return this.sales;
+	}
+
+	public void setSales(Set<Transaction> saless) {
+		this.sales = saless;
+	}
+
+	private List<Address> addresses;
+
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+	public List<Address> getAddresses() {
+		return this.addresses;
+	}
+
+	public void setAddresses(List<Address> addresss) {
+		this.addresses = addresss;
+	}
 
 	private String password;
 
@@ -77,17 +100,6 @@ public void setAddresses(List<Address> addresss) {
 	@Column(nullable = false, length = 50)
 	public String getLastName() {
 		return this.lastName;
-	}
-
-	private String userId;
-
-	public void setUserId(String value) {
-		this.userId = value;
-	}
-
-	@Column(nullable = false)
-	public String getUserId() {
-		return this.userId;
 	}
 
 	private String email;

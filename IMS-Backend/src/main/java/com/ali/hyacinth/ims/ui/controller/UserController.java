@@ -1,9 +1,11 @@
 package com.ali.hyacinth.ims.ui.controller;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
-import com.ali.hyacinth.ims.service.UserService;
-import com.ali.hyacinth.ims.shared.dto.UserDto;
+import com.ali.hyacinth.ims.service.AddressService;
+import com.ali.hyacinth.ims.service.EmployeeService;
+import com.ali.hyacinth.ims.shared.dto.AddressDTO;
+import com.ali.hyacinth.ims.shared.dto.EmployeeDto;
 import com.ali.hyacinth.ims.ui.request.UserDetailsRequest;
 import com.ali.hyacinth.ims.ui.request.UserLoginRequest;
+import com.ali.hyacinth.ims.ui.response.AddressRest;
 import com.ali.hyacinth.ims.ui.response.ErrorMessages;
 import com.ali.hyacinth.ims.ui.response.OperationStatusModel;
 import com.ali.hyacinth.ims.ui.response.RequestOperationName;
@@ -33,7 +38,10 @@ import com.ali.hyacinth.ims.ui.response.UserRest;
 public class UserController {
 	
 	@Autowired
-	UserService userService;
+	EmployeeService userService;
+	
+	@Autowired
+	AddressService addressService;
 	 
 	@GetMapping(path="/{id}",
 			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, 
@@ -42,11 +50,44 @@ public class UserController {
 	public UserRest getUser(@PathVariable String id, @RequestBody UserLoginRequest loginDetails) {
 		
 		UserRest returnValue = new UserRest();
-		UserDto userDto = new UserDto();
-		BeanUtils.copyProperties(loginDetails, userDto);
-		UserDto returnUserDto = userService.getEmployeeByUserId(id, userDto);
+		EmployeeDto employeeDto = new EmployeeDto();
+		BeanUtils.copyProperties(loginDetails, employeeDto);
+		EmployeeDto returnUserDto = userService.getEmployeeByUserId(id, employeeDto);
 		
 		BeanUtils.copyProperties(returnUserDto, returnValue);
+		
+		return returnValue;
+	}
+	
+	@GetMapping(path="/{id}/addresses",
+			produces = {  MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
+			)
+	public List<AddressRest> getUserAddresses(@PathVariable String id) {
+		
+		List<AddressRest> returnValue = new ArrayList<>();
+		
+		List<AddressDTO> addressDTO = addressService.getAddresses(id);
+		
+		if (addressDTO != null && !addressDTO.isEmpty()) {
+			Type listType = new TypeToken<List<AddressRest>>() {}.getType();
+			returnValue = new ModelMapper().map(addressDTO, listType);
+		}
+		
+		return returnValue;
+	}
+	
+	@GetMapping(path="/{id}/addresses/{addressId}",
+			produces = {  MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
+			)
+	public AddressRest getUserAddress(@PathVariable String addressId) {
+		
+		//List<AddressRest> returnValue = new ArrayList<>();
+		
+		AddressDTO addressDTO = addressService.getAddress(addressId);
+		
+		ModelMapper modelMapper = new ModelMapper();
+		
+		AddressRest returnValue = modelMapper.map(addressDTO, AddressRest.class);
 		
 		return returnValue;
 	}
@@ -77,9 +118,9 @@ public class UserController {
 		UserRest returnValue = new UserRest();
 		
 		ModelMapper modelMapper = new ModelMapper();
-		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+		EmployeeDto employeeDto = modelMapper.map(userDetails, EmployeeDto.class);
 		
-		UserDto createEmployee = userService.createEmployee(userDto);
+		EmployeeDto createEmployee = userService.createEmployee(employeeDto);
 
 		returnValue = modelMapper.map(createEmployee, UserRest.class);
 		
@@ -93,10 +134,10 @@ public class UserController {
 	public UserRest updateUser(@PathVariable String id, @RequestBody UserDetailsRequest userDetails) {
 	
 		UserRest returnValue = new UserRest();
-		UserDto userDto = new UserDto();
-		BeanUtils.copyProperties(userDetails, userDto);
+		EmployeeDto employeeDto = new EmployeeDto();
+		BeanUtils.copyProperties(userDetails, employeeDto);
 		
-		UserDto updateUser = userService.updateUser(id, userDto);
+		EmployeeDto updateUser = userService.updateUser(id, employeeDto);
 		BeanUtils.copyProperties(updateUser, returnValue);
 		
 		return returnValue;
@@ -109,7 +150,7 @@ public class UserController {
 		
 		OperationStatusModel returnValue = new OperationStatusModel();
 		
-		userService.deleteUser(id);
+		userService.deleteEmployee(id);
 		
 		returnValue.setOperationName(RequestOperationName.DELETE.name());
 		returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
@@ -122,11 +163,11 @@ public class UserController {
 		
 		List<UserRest> returnValue = new ArrayList<>();
 		
-		List<UserDto> users = userService.getUsers(page, limit);
+		List<EmployeeDto> users = userService.getUsers(page, limit);
 		
-		for (UserDto userDto : users) {
+		for (EmployeeDto employeeDto : users) {
 			UserRest userModel = new UserRest();
-			BeanUtils.copyProperties(userDto, userModel);
+			BeanUtils.copyProperties(employeeDto, userModel);
 			returnValue.add(userModel);
 		}
 		return returnValue;
