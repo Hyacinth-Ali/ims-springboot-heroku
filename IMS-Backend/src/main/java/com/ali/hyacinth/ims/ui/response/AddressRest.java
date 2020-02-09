@@ -1,6 +1,6 @@
 package com.ali.hyacinth.ims.ui.response;
 
-import com.ali.hyacinth.ims.shared.dto.EmployeeDto;
+import com.ali.hyacinth.ims.shared.dto.EmployeeDTO;
 
 public class AddressRest {
 
@@ -10,7 +10,7 @@ public class AddressRest {
 	private String streetName;
 	private String postalCode;
 	private String type;
-	private EmployeeDto userDetails;
+	private EmployeeDTO userDetails;
 
 	public String getAddressId() {
 		return addressId;
@@ -60,11 +60,11 @@ public class AddressRest {
 		this.type = type;
 	}
 
-	public EmployeeDto getUserDetails() {
+	public EmployeeDTO getUserDetails() {
 		return userDetails;
 	}
 
-	public void setUserDetails(EmployeeDto userDetails) {
+	public void setUserDetails(EmployeeDTO userDetails) {
 		this.userDetails = userDetails;
 	}
 

@@ -13,15 +13,15 @@ import javax.persistence.Id;
 
 @Entity(name = "employees")
 public class Employee {
-	private String customerId;
+	private String employeeId;
 
-	public void setCustomerId(String value) {
-		this.customerId = value;
+	public void setEmployeeId(String value) {
+		this.employeeId = value;
 	}
 
 	@Column(nullable = false)
-	public String getCustomerId() {
-		return this.customerId;
+	public String getEmployeeId() {
+		return this.employeeId;
 	}
 
 	private Set<Transaction> sales;

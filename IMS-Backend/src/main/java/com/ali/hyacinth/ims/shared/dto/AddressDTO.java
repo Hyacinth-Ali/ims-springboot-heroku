@@ -9,7 +9,7 @@ public class AddressDTO {
 	private String streetName;
 	private String postalCode;
 	private String type;
-	private EmployeeDto userDetails;
+	private EmployeeDTO userDetails;
 
 	public long getId() {
 		return id;
@@ -59,11 +59,11 @@ public class AddressDTO {
 		this.type = type;
 	}
 
-	public EmployeeDto getUserDetails() {
+	public EmployeeDTO getUserDetails() {
 		return userDetails;
 	}
 
-	public void setUserDetails(EmployeeDto userDetails) {
+	public void setUserDetails(EmployeeDTO userDetails) {
 		this.userDetails = userDetails;
 	}
 

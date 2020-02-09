@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ali.hyacinth.ims.model.Address;
-import com.ali.hyacinth.ims.model.User;
+import com.ali.hyacinth.ims.model.Employee;
 import com.ali.hyacinth.ims.repository.AddressRepository;
-import com.ali.hyacinth.ims.repository.UserRepository;
+import com.ali.hyacinth.ims.repository.EmployeeRepository;
 import com.ali.hyacinth.ims.service.AddressService;
 import com.ali.hyacinth.ims.shared.dto.AddressDTO;
 import com.ali.hyacinth.ims.ui.response.AddressRest;
@@ -19,7 +19,7 @@ import com.ali.hyacinth.ims.ui.response.AddressRest;
 public class AddressServiceImpl implements AddressService {
 	
 	@Autowired
-	UserRepository userRepository;
+	EmployeeRepository employeeRepository;
 	
 	@Autowired
 	AddressRepository addressRepository;
@@ -30,11 +30,11 @@ public class AddressServiceImpl implements AddressService {
 		
 		List<AddressDTO> returnValue = new ArrayList<>();
 		
-		User user = userRepository.findByUserId(userId);
+		Employee employee = employeeRepository.findByEmployeeId(userId);
 		
 		ModelMapper modelMapper = new ModelMapper();
 		
-		Iterable<Address> addresses = addressRepository.findAllByUser(user);
+		Iterable<Address> addresses = addressRepository.findAllByEmployee(employee);
 		
 		for (Address address : addresses) {
 			returnValue.add(modelMapper.map(address, AddressDTO.class));

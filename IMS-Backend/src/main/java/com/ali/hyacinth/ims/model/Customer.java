@@ -32,17 +32,6 @@ public class Customer {
 		return this.lastName;
 	}
 
-	private String customerId;
-
-	public void setCustomerId(String value) {
-		this.customerId = value;
-	}
-
-	@Column(nullable = false)
-	public String getCustomerId() {
-		return this.customerId;
-	}
-
 	private long id;
 
 	public void setId(long value) {
@@ -64,17 +53,6 @@ public class Customer {
 	@Column(nullable = false, length = 50)
 	public String getUserName() {
 		return this.userName;
-	}
-
-	private float debt;
-
-	public void setDebt(float value) {
-		this.debt = value;
-	}
-
-	@Column(nullable = false)
-	public float getDebt() {
-		return this.debt;
 	}
 
 	private Set<Transaction> purchases;

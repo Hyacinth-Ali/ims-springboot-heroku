@@ -4,30 +4,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.OneToMany;
 
 @Entity(name = "transactions")
 public class Transaction {
-	private float totalAmount;
+	
+	private double totalAmount;
 
-	public void setTotalAmount(float value) {
+	public void setTotalAmount(double value) {
 		this.totalAmount = value;
 	}
 
-	public float getTotalAmount() {
+	@Column(nullable = false, unique = true)
+	public double getTotalAmount() {
 		return this.totalAmount;
 	}
 
-	private float amountPaid;
+	private double amountPaid;
 
-	public void setAmountPaid(float value) {
+	public void setAmountPaid(double value) {
 		this.amountPaid = value;
 	}
 
-	public float getAmountPaid() {
+	@Column(nullable = false)
+	public double getAmountPaid() {
 		return this.amountPaid;
 	}
 
@@ -86,5 +92,25 @@ public class Transaction {
 	public void setProductTransactions(Set<ProductTransaction> productTransactionss) {
 		this.productTransactions = productTransactionss;
 	}
+	
+	private double amountUnpaid;
+	
+	public double getAmountUnpaid() {
+		amountUnpaid = this.totalAmount - this.amountPaid;
+		return amountUnpaid;
+	}
+	
+	private Date date;
+
+	@Column(nullable = false)
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
 
 }

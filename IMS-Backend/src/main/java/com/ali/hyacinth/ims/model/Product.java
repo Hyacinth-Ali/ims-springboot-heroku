@@ -8,14 +8,14 @@ import javax.persistence.OneToOne;
 
 @Entity(name = "products")
 public class Product {
-	private float itemPrice;
+	private double itemPrice;
 
-	public void setItemPrice(float value) {
+	public void setItemPrice(double value) {
 		this.itemPrice = value;
 	}
 
 	@Column(nullable = false)
-	public float getItemPrice() {
+	public double getItemPrice() {
 		return this.itemPrice;
 	}
 

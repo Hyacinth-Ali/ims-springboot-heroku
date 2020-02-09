@@ -3,7 +3,7 @@ package com.ali.hyacinth.ims.shared.dto;
 import java.io.Serializable;
 import java.util.List;
 
-public class EmployeeDto implements Serializable {
+public class EmployeeDTO implements Serializable {
 
 	private static final long serialVersionUID = 9132968119495994264L;
 

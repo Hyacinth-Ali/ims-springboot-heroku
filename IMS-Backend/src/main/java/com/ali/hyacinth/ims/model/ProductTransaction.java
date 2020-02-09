@@ -9,14 +9,14 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "productTransactions")
 public class ProductTransaction {
-	private float price;
+	private double price;
 
-	public void setPrice(float value) {
+	public void setPrice(double value) {
 		this.price = value;
 	}
 
 	@Column(nullable = false)
-	public float getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 

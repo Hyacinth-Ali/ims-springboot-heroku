@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.shared.dto.CEODTO;
-import com.ali.hyacinth.ims.shared.dto.EmployeeDto;
+import com.ali.hyacinth.ims.shared.dto.EmployeeDTO;
 
 public interface CEOService {
 	
