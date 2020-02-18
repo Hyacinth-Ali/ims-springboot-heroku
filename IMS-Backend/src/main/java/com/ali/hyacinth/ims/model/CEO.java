@@ -5,11 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.OneToMany;
 
 @Entity
-public class CEO {
+public class CEO implements Serializable {
+	
+	
+	
 	private String password;
 
 	public void setPassword(String value) {

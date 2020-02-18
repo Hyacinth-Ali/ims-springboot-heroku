@@ -10,11 +10,11 @@ import com.ali.hyacinth.ims.shared.dto.TransactionDTO;
 
 public interface TransactionService {
 	
-	List<TransactionDTO> getCustomerTransactions(String customerID);
+	List<TransactionDTO> getCustomerTransactions(String userName);
 	
-	void createTransaction(String customerID, String managerUserName) throws InvalidInputException;
+	void createTransaction(String customerUserName, String employeeUserName) throws InvalidInputException;
 	
-	void addTransactionProduct(String productName, int quantity) throws InvalidInputException;
+	void addTransactionProduct(String productName, int quantity, long id) throws InvalidInputException;
 	
 	void setTransactionTotalAmount() throws InvalidInputException;
 	

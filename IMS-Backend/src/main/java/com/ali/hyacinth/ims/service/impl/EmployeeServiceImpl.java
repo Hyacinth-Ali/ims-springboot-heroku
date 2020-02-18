@@ -89,7 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public EmployeeDTO getEmployeeByUserId(String userId, EmployeeDTO employeeDTO) {
 		
 		EmployeeDTO returnValue = new EmployeeDTO();
-		Employee employee = employeeRepository.findByEmployeeId(userId);
+		Employee employee = employeeRepository.findByUserName(userId);
 		if (employee == null) {
 			throw new RuntimeException("Wrong credentials");
 		}
@@ -109,7 +109,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void deleteEmployee(String employeeId) {
 		
-		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		Employee employee = employeeRepository.findByUserName(employeeId);
 		
 		if (employee == null) {
 			throw new InvalidInputException("The employee doesn't exist");
@@ -143,7 +143,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			throw new InvalidInputException(error);
 		}
 		
-		Employee employee = employeeRepository.findByEmployeeId(employeeDTO.getUserName());
+		Employee employee = employeeRepository.findByUserName(employeeDTO.getUserName());
 		
 		if (employee == null) {
 			throw new InvalidInputException("The employee doesn't exist");

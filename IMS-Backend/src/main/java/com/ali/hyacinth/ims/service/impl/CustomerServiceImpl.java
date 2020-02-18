@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.model.Customer;
@@ -144,6 +145,7 @@ public class CustomerServiceImpl implements CustomerService {
 	 * Delete an instance of a customer from the database
 	 * @param userName of the customer
 	 */
+	@Transactional
 	@Override
 	public void deleteCustomer(String userName) {
 		Customer customer = customerRepository.findByUserName(userName);

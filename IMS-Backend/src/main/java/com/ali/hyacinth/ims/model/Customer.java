@@ -1,4 +1,5 @@
 package com.ali.hyacinth.ims.model;
+import javax.persistence.OneToMany;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,8 +58,8 @@ public class Customer {
 
 	private Set<Transaction> purchases;
 
-	@ManyToMany
-	public Set<Transaction> getPurchases() {
+	@OneToMany(mappedBy="buyer")
+public Set<Transaction> getPurchases() {
 		return this.purchases;
 	}
 

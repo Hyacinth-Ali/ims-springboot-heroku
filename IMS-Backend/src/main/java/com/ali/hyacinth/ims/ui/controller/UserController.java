@@ -120,9 +120,9 @@ public class UserController {
 		ModelMapper modelMapper = new ModelMapper();
 		EmployeeDTO employeeDTO = modelMapper.map(userDetails, EmployeeDTO.class);
 		
-		EmployeeDTO createEmployee = userService.createEmployee(employeeDTO);
+		//EmployeeDTO createEmployee = userService.createEmployee(employeeDTO);
 
-		returnValue = modelMapper.map(createEmployee, UserRest.class);
+		//returnValue = modelMapper.map(createEmployee, UserRest.class);
 		
 		return returnValue;
 	}
@@ -137,8 +137,8 @@ public class UserController {
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(userDetails, employeeDTO);
 		
-		EmployeeDTO updateUser = userService.updateUser(id, employeeDTO);
-		BeanUtils.copyProperties(updateUser, returnValue);
+		//EmployeeDTO updateUser = userService.updateUser(id, employeeDTO);
+		//BeanUtils.copyProperties(updateUser, returnValue);
 		
 		return returnValue;
 	}

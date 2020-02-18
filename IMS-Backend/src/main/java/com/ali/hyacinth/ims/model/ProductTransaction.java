@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 
@@ -45,6 +46,7 @@ public class ProductTransaction {
 	private Transaction transaction;
 
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "transaction_id")
 	public Transaction getTransaction() {
 		return this.transaction;
 	}

@@ -30,7 +30,7 @@ public class AddressServiceImpl implements AddressService {
 		
 		List<AddressDTO> returnValue = new ArrayList<>();
 		
-		Employee employee = employeeRepository.findByEmployeeId(userId);
+		Employee employee = employeeRepository.findByUserName(userId);
 		
 		ModelMapper modelMapper = new ModelMapper();
 		

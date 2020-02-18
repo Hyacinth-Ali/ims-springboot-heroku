@@ -8,6 +8,6 @@ import com.ali.hyacinth.ims.model.Employee;
 @Repository
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {
 	Employee findByEmail(String email);
-	Employee findByEmployeeId(String employeeId);
+	Employee findByUserName(String employeeUserName);
 }
 

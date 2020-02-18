@@ -37,15 +37,15 @@ public class Transaction {
 		return this.amountPaid;
 	}
 
-	private String id;
-
-	public void setId(String value) {
+	private long id;
+	
+	public void setId(long value) {
 		this.id = value;
 	}
 
 	@Id
 	@GeneratedValue
-	public String getId() {
+	public long getId() {
 		return this.id;
 	}
 
@@ -70,17 +70,17 @@ public class Transaction {
 	public void setCEO(CEO cEO) {
 		this.cEO = cEO;
 	}
+private Customer buyer;
 
-	private Set<Customer> buyer;
+	@ManyToOne(optional=false)
+public Customer getBuyer() {
+   return this.buyer;
+}
 
-	@ManyToMany(mappedBy = "purchases")
-	public Set<Customer> getBuyer() {
-		return this.buyer;
-	}
+public void setBuyer(Customer buyer) {
+   this.buyer = buyer;
+}
 
-	public void setBuyer(Set<Customer> buyers) {
-		this.buyer = buyers;
-	}
 
 	private Set<ProductTransaction> productTransactions;
 

@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_In-PICspEeqIwr50XatQew" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_In-PISspEeqIwr50XatQew" source="codegen">
         <details xmi:id="_In-PIispEeqIwr50XatQew" key="codegenDirectory" value="/IMS-Backend/src/main/java"/>
-        <details xmi:id="_JZ9swCspEeqIwr50XatQew" key="AssociatedSourceCode" value="/IMS-Backend/src/main/java/com/ali/hyacinth/ims/ImsBackendApplication.java;3908401903/1;/IMS-Backend/src/test/java/com/ali/hyacinth/ims/ImsBackendApplicationTests.java;4065897284/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Address.java;811179049/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Employee.java;2684319301/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/CEO.java;2510636708/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Transaction.java;2809919590/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Customer.java;320318838/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Product.java;2949792785/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/ProductTransaction.java;2629470932/1;"/>
+        <details xmi:id="_JZ9swCspEeqIwr50XatQew" key="AssociatedSourceCode" value="/IMS-Backend/src/main/java/com/ali/hyacinth/ims/ImsBackendApplication.java;2298010148/1;/IMS-Backend/src/test/java/com/ali/hyacinth/ims/ImsBackendApplicationTests.java;4065897284/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Address.java;811179049/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Employee.java;2684319301/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/CEO.java;118102375/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Transaction.java;2602368939/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Customer.java;3738600951/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Product.java;2949792785/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/ProductTransaction.java;700299665/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_IuiKICspEeqIwr50XatQew">
@@ -129,6 +129,7 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Tky-o0ldEeqoWa5qGecVhQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Tky-pEldEeqoWa5qGecVhQ" value="*"/>
                 </ownedAttribute>
+                <interfaceRealization xmi:id="_FzwSME6jEeqjzPgac6vnmA" client="_UQkxcElbEeqoWa5qGecVhQ" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_EA3MIElcEeqoWa5qGecVhQ" name="Transaction">
                 <ownedAttribute xmi:id="_74aB0ElcEeqoWa5qGecVhQ" name="totalAmount" visibility="public">
@@ -138,7 +139,7 @@
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_GHNYIEldEeqoWa5qGecVhQ" name="id" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_RolwoEldEeqoWa5qGecVhQ" name="seller" type="_tWqkoCspEeqIwr50XatQew" association="_RolJkEldEeqoWa5qGecVhQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RolwoUldEeqoWa5qGecVhQ" value="1"/>
@@ -149,8 +150,8 @@
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Tky-oUldEeqoWa5qGecVhQ" value="1"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_yvnUEUnaEeqBv_2bIB2tRQ" name="buyer" type="_zapV4EldEeqoWa5qGecVhQ" association="_yvmtAEnaEeqBv_2bIB2tRQ">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yvnUEknaEeqBv_2bIB2tRQ"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yvnUE0naEeqBv_2bIB2tRQ" value="*"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yvnUEknaEeqBv_2bIB2tRQ" value="1"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yvnUE0naEeqBv_2bIB2tRQ" value="1"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_G61QMknbEeqBv_2bIB2tRQ" name="productTransactions" type="_Zll7oEnaEeqBv_2bIB2tRQ" aggregation="composite" association="_G60pIEnbEeqBv_2bIB2tRQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G61QM0nbEeqBv_2bIB2tRQ"/>
@@ -223,8 +224,14 @@
               <packagedElement xmi:type="uml:Association" xmi:id="_G60pIEnbEeqBv_2bIB2tRQ" name="" memberEnd="_G60pIUnbEeqBv_2bIB2tRQ _G61QMknbEeqBv_2bIB2tRQ"/>
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_IucDgCspEeqIwr50XatQew" name="ImsBackendApplication">
-              <ownedAttribute xmi:id="_W9aUcEoGEeqnOe8GYZITow" name="currentEmployees" visibility="public" type="_tWqkoCspEeqIwr50XatQew" isOrdered="true" isReadOnly="true" association="_W9cJoEoGEeqnOe8GYZITow">
+              <ownedAttribute xmi:id="_W9aUcEoGEeqnOe8GYZITow" name="currentEmployees" visibility="public" isStatic="true" type="_tWqkoCspEeqIwr50XatQew" isOrdered="true" isReadOnly="true" association="_W9cJoEoGEeqnOe8GYZITow">
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_W9aUcUoGEeqnOe8GYZITow" value="*"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_57TucE6rEeqjzPgac6vnmA" name="currentCustomers" visibility="public" isStatic="true" type="_zapV4EldEeqoWa5qGecVhQ" isOrdered="true" isReadOnly="true" association="_57VjoE6rEeqjzPgac6vnmA">
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_57TucU6rEeqjzPgac6vnmA" value="*"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_Pwyv0E6zEeqjzPgac6vnmA" name="currentTransactions" visibility="public" isStatic="true" type="_EA3MIElcEeqoWa5qGecVhQ" isOrdered="true" isReadOnly="true" association="_Pwz98E6zEeqjzPgac6vnmA">
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pwyv0U6zEeqjzPgac6vnmA" value="*"/>
               </ownedAttribute>
               <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IvGK0CspEeqIwr50XatQew" name="main" specification="_IujYQCspEeqIwr50XatQew">
                 <ownedParameter xmi:id="_IvGK0SspEeqIwr50XatQew" name="args">
@@ -235,24 +242,78 @@
                 <body>SpringApplication.run(ImsBackendApplication.class, args);
 	</body>
               </ownedBehavior>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_OnSMcEoFEeqnOe8GYZITow" name="addCurrenteEmployees" specification="_OnOiEEoFEeqnOe8GYZITow">
-                <ownedParameter xmi:id="_OnSMcUoFEeqnOe8GYZITow" name="currenteEmployees" type="_tWqkoCspEeqIwr50XatQew"/>
-                <language>java</language>
-                <body>this.currentEmployees.add(currenteEmployees);
-	</body>
-              </ownedBehavior>
               <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ndR1oEoFEeqnOe8GYZITow" name="removeCurrentEmployee" specification="_ndQngEoFEeqnOe8GYZITow">
                 <ownedParameter xmi:id="_ndR1oUoFEeqnOe8GYZITow" name="employeeId">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedParameter>
                 <language>java</language>
                 <body>Employee employee = null;
-		for (Employee currentEmployee : this.getCurrentEmployees()) {
+		for (Employee currentEmployee : getCurrentEmployees()) {
 			if (currentEmployee.getEmployeeId().equals(employeeId)) {
 				employee = currentEmployee;
 			}
 		}
-		this.getCurrentEmployees().remove(employee);
+		getCurrentEmployees().remove(employee);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ME60oE6rEeqjzPgac6vnmA" name="getCurrentDate" specification="_MErkEE6rEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_ME60oU6rEeqjzPgac6vnmA" type="_zOR9EEqKEeqt2ILb0Y3UWA" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>java.util.Calendar cal = java.util.Calendar.getInstance();
+	    cal.set(Calendar.HOUR_OF_DAY, 0);
+	    cal.set(Calendar.MINUTE, 0);
+	    cal.set(Calendar.SECOND, 0);
+	    cal.set(Calendar.MILLISECOND, 0);
+	    java.util.Date date = cal.getTime();
+	    return date;
+	  </body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_h43zsE6sEeqjzPgac6vnmA" name="addCurrentCustomer" specification="_h41XcE6sEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_h43zsU6sEeqjzPgac6vnmA" name="currenteCustomer" type="_zapV4EldEeqoWa5qGecVhQ"/>
+                <language>java</language>
+                <body>currentCustomers.add(currenteCustomer);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_k51qUE6sEeqjzPgac6vnmA" name="addCurrentEmployees" specification="_k5zOEE6sEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_k51qUU6sEeqjzPgac6vnmA" name="currenteEmployee" type="_tWqkoCspEeqIwr50XatQew"/>
+                <language>java</language>
+                <body>currentEmployees.add(currenteEmployee);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_t8fWkE6sEeqjzPgac6vnmA" name="removeCurrentCustomer" specification="_t8eIcE6sEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_t8fWkU6sEeqjzPgac6vnmA" name="customerUserName">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>Customer customer = null;
+		for (Customer currentCustomer : getCurrentCustomers()) {
+			if (currentCustomer.getUserName().equals(customerUserName)) {
+				customer = currentCustomer;
+			}
+		}
+		getCurrentCustomers().remove(customer);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_onS54060EeqjzPgac6vnmA" name="addCurrentTransaction" specification="_onREsE60EeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_onS55E60EeqjzPgac6vnmA" name="currentTransaction" type="_EA3MIElcEeqoWa5qGecVhQ"/>
+                <language>java</language>
+                <body>currentTransactions.add(currentTransaction);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_9ZrjsE60EeqjzPgac6vnmA" name="removeCurrentTransaction" specification="_9ZqVkE60EeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_9ZrjsU60EeqjzPgac6vnmA" name="transactionID">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>Transaction transaction = null;
+		for (Transaction currentTransaction : getCurrentTransactions()) {
+			if (currentTransaction.getId() == transactionID) {
+				transaction = currentTransaction;
+			}
+		}
+		getCurrentCustomers().remove(transaction);
 	</body>
               </ownedBehavior>
               <ownedOperation xmi:id="_IujYQCspEeqIwr50XatQew" name="main" isStatic="true" method="_IvGK0CspEeqIwr50XatQew">
@@ -261,12 +322,31 @@
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IulNcSspEeqIwr50XatQew" value="*"/>
                 </ownedParameter>
               </ownedOperation>
-              <ownedOperation xmi:id="_OnOiEEoFEeqnOe8GYZITow" name="addCurrenteEmployees" method="_OnSMcEoFEeqnOe8GYZITow">
-                <ownedParameter xmi:id="_OnPJIEoFEeqnOe8GYZITow" name="currenteEmployees" type="_tWqkoCspEeqIwr50XatQew"/>
-              </ownedOperation>
               <ownedOperation xmi:id="_ndQngEoFEeqnOe8GYZITow" name="removeCurrentEmployee" method="_ndR1oEoFEeqnOe8GYZITow">
                 <ownedParameter xmi:id="_ndQngUoFEeqnOe8GYZITow" name="employeeId">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_MErkEE6rEeqjzPgac6vnmA" name="getCurrentDate" isStatic="true" method="_ME60oE6rEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_MEsLIE6rEeqjzPgac6vnmA" type="_zOR9EEqKEeqt2ILb0Y3UWA" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_h41XcE6sEeqjzPgac6vnmA" name="addCurrentCustomer" method="_h43zsE6sEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_h41XcU6sEeqjzPgac6vnmA" name="currenteCustomer" type="_zapV4EldEeqoWa5qGecVhQ"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_k5zOEE6sEeqjzPgac6vnmA" name="addCurrentEmployees" method="_k51qUE6sEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_k5zOEU6sEeqjzPgac6vnmA" name="currenteEmployee" type="_tWqkoCspEeqIwr50XatQew"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_t8eIcE6sEeqjzPgac6vnmA" name="removeCurrentCustomer" method="_t8fWkE6sEeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_t8eIcU6sEeqjzPgac6vnmA" name="customerUserName">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_onREsE60EeqjzPgac6vnmA" name="addCurrentTransaction" method="_onS54060EeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_onREsU60EeqjzPgac6vnmA" name="currentTransaction" type="_EA3MIElcEeqoWa5qGecVhQ"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_9ZqVkE60EeqjzPgac6vnmA" name="removeCurrentTransaction" method="_9ZrjsE60EeqjzPgac6vnmA">
+                <ownedParameter xmi:id="_9ZqVkU60EeqjzPgac6vnmA" name="transactionID">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
                 </ownedParameter>
               </ownedOperation>
             </packagedElement>
@@ -285,6 +365,12 @@
             </packagedElement>
             <packagedElement xmi:type="uml:Association" xmi:id="_W9cJoEoGEeqnOe8GYZITow" name="" memberEnd="_W9cJoUoGEeqnOe8GYZITow _W9aUcEoGEeqnOe8GYZITow">
               <ownedEnd xmi:id="_W9cJoUoGEeqnOe8GYZITow" name="" type="_IucDgCspEeqIwr50XatQew" association="_W9cJoEoGEeqnOe8GYZITow"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_57VjoE6rEeqjzPgac6vnmA" name="" memberEnd="_57VjoU6rEeqjzPgac6vnmA _57TucE6rEeqjzPgac6vnmA">
+              <ownedEnd xmi:id="_57VjoU6rEeqjzPgac6vnmA" name="" type="_IucDgCspEeqIwr50XatQew" association="_57VjoE6rEeqjzPgac6vnmA"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Pwz98E6zEeqjzPgac6vnmA" name="" memberEnd="_Pwz98U6zEeqjzPgac6vnmA _Pwyv0E6zEeqjzPgac6vnmA">
+              <ownedEnd xmi:id="_Pwz98U6zEeqjzPgac6vnmA" name="" type="_IucDgCspEeqIwr50XatQew" association="_Pwz98E6zEeqjzPgac6vnmA"/>
             </packagedElement>
           </packagedElement>
         </packagedElement>
@@ -336,6 +422,7 @@
         <packagedElement xmi:type="uml:Interface" xmi:id="_R6KNMDdTEeqx0sH5IrB7jA" name="List"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_M-RI0ElYEeqoWa5qGecVhQ" name="HashSet"/>
         <packagedElement xmi:type="uml:DataType" xmi:id="_zOR9EEqKEeqt2ILb0Y3UWA" name="Date"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_MEyRwE6rEeqjzPgac6vnmA" name="Calendar"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:DataType" xmi:id="_NiG44ElcEeqoWa5qGecVhQ" name="Date"/>
@@ -343,6 +430,7 @@
     <packagedElement xmi:type="uml:DataType" xmi:id="_9QBEkEqGEeqt2ILb0Y3UWA" name="amountPaid"/>
     <packagedElement xmi:type="uml:DataType" xmi:id="_AIREEEqHEeqt2ILb0Y3UWA" name="price"/>
     <packagedElement xmi:type="uml:DataType" xmi:id="_Cd6FwEqHEeqt2ILb0Y3UWA" name="itemPrice"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_1AjLAE6zEeqjzPgac6vnmA" name="id"/>
     <profileApplication xmi:id="_IoArYCspEeqIwr50XatQew">
       <eAnnotations xmi:id="_IoEVwCspEeqIwr50XatQew" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
@@ -650,12 +738,17 @@
   <UMLLabProfile:LegacyStyledElement xmi:id="_YzVmAknfEeqBv_2bIB2tRQ" base_Element="_GHNYIEldEeqoWa5qGecVhQ">
     <associatedElement xmi:type="uml:Operation" xmi:id="_YzWNEEnfEeqBv_2bIB2tRQ" name="getId" method="_YzYCQEnfEeqBv_2bIB2tRQ">
       <ownedParameter xmi:id="_YzW0IUnfEeqBv_2bIB2tRQ" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
       </ownedParameter>
     </associatedElement>
     <associatedElement xmi:type="uml:Operation" xmi:id="_YzXbMEnfEeqBv_2bIB2tRQ" name="setId" method="_YzYCQknfEeqBv_2bIB2tRQ">
       <ownedParameter xmi:id="_YzXbMUnfEeqBv_2bIB2tRQ" name="value">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </associatedElement>
+    <associatedElement xmi:type="uml:Operation" xmi:id="_PJz9cE61EeqjzPgac6vnmA" name="setId" method="_PJ1LkE61EeqjzPgac6vnmA">
+      <ownedParameter xmi:id="_PJz9cU61EeqjzPgac6vnmA" name="value">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
       </ownedParameter>
     </associatedElement>
   </UMLLabProfile:LegacyStyledElement>
@@ -664,9 +757,8 @@
     <annotations xmi:id="_YzWNE0nfEeqBv_2bIB2tRQ" name="GeneratedValue"/>
   </UMLLabProfile:Annotations>
   <uml:OpaqueBehavior xmi:id="_YzYCQEnfEeqBv_2bIB2tRQ" name="getId" specification="_YzWNEEnfEeqBv_2bIB2tRQ">
-    <ownedParameter xmi:id="_YzYCQUnfEeqBv_2bIB2tRQ" direction="return">
-      <name xsi:nil="true"/>
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    <ownedParameter xmi:id="_ohhMkE61EeqjzPgac6vnmA" direction="return">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
     </ownedParameter>
     <language>java</language>
     <body>return this.id;
@@ -680,10 +772,8 @@
     <body>this.id = value;
 	</body>
   </uml:OpaqueBehavior>
-  <UMLLabProfile:StyledElement xmi:id="_OnQXQEoFEeqnOe8GYZITow" base_Element="_OnOiEEoFEeqnOe8GYZITow"/>
   <UMLLabProfile:StyledElement xmi:id="_ndQngkoFEeqnOe8GYZITow" base_Element="_ndQngEoFEeqnOe8GYZITow"/>
   <UMLLabProfile:Reference xmi:id="_W9i3UEoGEeqnOe8GYZITow" base_Element="_W9cJoEoGEeqnOe8GYZITow"/>
-  <UMLLabProfile:StyledElement xmi:id="_chK38EoGEeqnOe8GYZITow" base_Element="_W9aUcEoGEeqnOe8GYZITow"/>
   <UMLLabProfile:UnresolvedElement xmi:id="_663LEEqGEeqt2ILb0Y3UWA" base_Element="_66ySkEqGEeqt2ILb0Y3UWA"/>
   <UMLLabProfile:UnresolvedElement xmi:id="_9QEu8EqGEeqt2ILb0Y3UWA" base_Element="_9QBEkEqGEeqt2ILb0Y3UWA"/>
   <UMLLabProfile:UnresolvedElement xmi:id="_AIUucEqHEeqt2ILb0Y3UWA" base_Element="_AIREEEqHEeqt2ILb0Y3UWA"/>
@@ -709,4 +799,73 @@
   <Persistency:Column xmi:id="_7Ut4sEqKEeqt2ILb0Y3UWA" base_Property="_zOYDsEqKEeqt2ILb0Y3UWA" nullable="false"/>
   <Persistency:Column xmi:id="_BuooIEqLEeqt2ILb0Y3UWA" base_Property="_Ai73QEldEeqoWa5qGecVhQ" nullable="false"/>
   <Persistency:Column xmi:id="_C81goEqLEeqt2ILb0Y3UWA" base_Property="_74aB0ElcEeqoWa5qGecVhQ" nullable="false" unique="true"/>
+  <UMLLabProfile:StyledElement xmi:id="_MEsyME6rEeqjzPgac6vnmA" base_Element="_MErkEE6rEeqjzPgac6vnmA"/>
+  <UMLLabProfile:Reference xmi:id="_ME6NkE6rEeqjzPgac6vnmA" base_Element="_MEyRwE6rEeqjzPgac6vnmA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_jGw_oE6rEeqjzPgac6vnmA" base_Element="_W9aUcEoGEeqnOe8GYZITow">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_jGw_oU6rEeqjzPgac6vnmA" name="getCurrentEmployees" isStatic="true" method="_jGy00E6rEeqjzPgac6vnmA">
+      <ownedParameter xmi:id="_jGxmsE6rEeqjzPgac6vnmA" type="_tWqkoCspEeqIwr50XatQew" isOrdered="true" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jGxmsU6rEeqjzPgac6vnmA" value="*"/>
+      </ownedParameter>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
+  <uml:OpaqueBehavior xmi:id="_jGy00E6rEeqjzPgac6vnmA" name="getCurrentEmployees" specification="_jGw_oU6rEeqjzPgac6vnmA">
+    <ownedParameter xmi:id="_jGy00U6rEeqjzPgac6vnmA" type="_tWqkoCspEeqIwr50XatQew" isOrdered="true" direction="return">
+      <name xsi:nil="true"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jGy00k6rEeqjzPgac6vnmA" value="*"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>return currentEmployees;
+	</body>
+  </uml:OpaqueBehavior>
+  <UMLLabProfile:Reference xmi:id="_57bDME6rEeqjzPgac6vnmA" base_Element="_57VjoE6rEeqjzPgac6vnmA"/>
+  <UMLLabProfile:StyledElement xmi:id="_h42lkE6sEeqjzPgac6vnmA" base_Element="_h41XcE6sEeqjzPgac6vnmA"/>
+  <UMLLabProfile:StyledElement xmi:id="_k50cME6sEeqjzPgac6vnmA" base_Element="_k5zOEE6sEeqjzPgac6vnmA"/>
+  <UMLLabProfile:StyledElement xmi:id="_t8evgE6sEeqjzPgac6vnmA" base_Element="_t8eIcE6sEeqjzPgac6vnmA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_ZR9y0E6tEeqjzPgac6vnmA" base_Element="_57TucE6rEeqjzPgac6vnmA">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_ZR9y0U6tEeqjzPgac6vnmA" name="getCurrentCustomers" isStatic="true" method="_ZR_oAE6tEeqjzPgac6vnmA">
+      <ownedParameter xmi:id="_ZR-Z4E6tEeqjzPgac6vnmA" type="_zapV4EldEeqoWa5qGecVhQ" isOrdered="true" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZR-Z4U6tEeqjzPgac6vnmA" value="*"/>
+      </ownedParameter>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
+  <uml:OpaqueBehavior xmi:id="_ZR_oAE6tEeqjzPgac6vnmA" name="getCurrentCustomers" specification="_ZR9y0U6tEeqjzPgac6vnmA">
+    <ownedParameter xmi:id="_ZR_oAU6tEeqjzPgac6vnmA" type="_zapV4EldEeqoWa5qGecVhQ" isOrdered="true" direction="return">
+      <name xsi:nil="true"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZR_oAk6tEeqjzPgac6vnmA" value="*"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>return currentCustomers;
+	</body>
+  </uml:OpaqueBehavior>
+  <UMLLabProfile:Reference xmi:id="_Pw4PYE6zEeqjzPgac6vnmA" base_Element="_Pwz98E6zEeqjzPgac6vnmA"/>
+  <UMLLabProfile:UnresolvedElement xmi:id="_1Am1YE6zEeqjzPgac6vnmA" base_Element="_1AjLAE6zEeqjzPgac6vnmA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_onRrwE60EeqjzPgac6vnmA" base_Element="_Pwyv0E6zEeqjzPgac6vnmA">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_onRrwU60EeqjzPgac6vnmA" name="getCurrentTransactions" isStatic="true" method="_onS54E60EeqjzPgac6vnmA">
+      <ownedParameter xmi:id="_onRrwk60EeqjzPgac6vnmA" type="_EA3MIElcEeqoWa5qGecVhQ" isOrdered="true" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_onRrw060EeqjzPgac6vnmA" value="*"/>
+      </ownedParameter>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
+  <UMLLabProfile:StyledElement xmi:id="_onSS0E60EeqjzPgac6vnmA" base_Element="_onREsE60EeqjzPgac6vnmA"/>
+  <uml:OpaqueBehavior xmi:id="_onS54E60EeqjzPgac6vnmA" name="getCurrentTransactions" specification="_onRrwU60EeqjzPgac6vnmA">
+    <ownedParameter xmi:id="_onS54U60EeqjzPgac6vnmA" type="_EA3MIElcEeqoWa5qGecVhQ" isOrdered="true" direction="return">
+      <name xsi:nil="true"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_onS54k60EeqjzPgac6vnmA" value="*"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>return currentTransactions;
+	</body>
+  </uml:OpaqueBehavior>
+  <UMLLabProfile:StyledElement xmi:id="_9Zq8oE60EeqjzPgac6vnmA" base_Element="_9ZqVkE60EeqjzPgac6vnmA"/>
+  <uml:OpaqueBehavior xmi:id="_PJ1LkE61EeqjzPgac6vnmA" name="setId" specification="_PJz9cE61EeqjzPgac6vnmA">
+    <ownedParameter xmi:id="_PJ1LkU61EeqjzPgac6vnmA" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>this.id = value;
+	</body>
+  </uml:OpaqueBehavior>
+  <Persistency:JoinColumns xmi:id="_Aw028E67EeqjzPgac6vnmA" base_Property="_G60pIUnbEeqBv_2bIB2tRQ">
+    <columns xmi:id="_Aw2sIE67EeqjzPgac6vnmA" label="transaction_id" unique="true"/>
+  </Persistency:JoinColumns>
 </xmi:XMI>

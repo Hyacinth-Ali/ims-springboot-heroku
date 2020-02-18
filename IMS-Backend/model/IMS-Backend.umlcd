@@ -102,15 +102,15 @@
     </nameVisual>
     <sourceRole xmi:id="_yvoiM0naEeqBv_2bIB2tRQ" aggregationKind="NONE" name="purchases" navigable="true">
       <modelElement href="IMS-Backend.uml#_yvmtAUnaEeqBv_2bIB2tRQ"/>
-      <visualProperties xmi:id="_yzXysUnaEeqBv_2bIB2tRQ" position="-75.5,24.333333333333314"/>
+      <visualProperties xmi:id="_yzXysUnaEeqBv_2bIB2tRQ" position="-71.5,16.333333333333314"/>
       <visibility xmi:id="_yvoiNEnaEeqBv_2bIB2tRQ" label="+"/>
       <cardinality xmi:id="_yvoiNUnaEeqBv_2bIB2tRQ" label="*" max="-1"/>
     </sourceRole>
     <targetRole xmi:id="_yvoiNknaEeqBv_2bIB2tRQ" aggregationKind="NONE" name="buyer" navigable="true">
       <modelElement href="IMS-Backend.uml#_yvnUEUnaEeqBv_2bIB2tRQ"/>
-      <visualProperties xmi:id="_yzYZwUnaEeqBv_2bIB2tRQ" position="2.5,-65.33333333333337"/>
+      <visualProperties xmi:id="_yzYZwUnaEeqBv_2bIB2tRQ" position="16.5,-40.33333333333337"/>
       <visibility xmi:id="_yvoiN0naEeqBv_2bIB2tRQ" label="+"/>
-      <cardinality xmi:id="_yvoiOEnaEeqBv_2bIB2tRQ" label="*" max="-1"/>
+      <cardinality xmi:id="_yvoiOEnaEeqBv_2bIB2tRQ" label="1" max="1" min="1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_G63scEnbEeqBv_2bIB2tRQ" sourceAnchor="166.0,93.0" targetAnchor="0.0,35.0" target="_ZlmisEnaEeqBv_2bIB2tRQ" source="_EA3MIUlcEeqoWa5qGecVhQ">
@@ -122,6 +122,9 @@
     <sourceRole xmi:id="_G63sc0nbEeqBv_2bIB2tRQ" aggregationKind="NONE" name="transaction" navigable="true">
       <modelElement href="IMS-Backend.uml#_G60pIUnbEeqBv_2bIB2tRQ"/>
       <visualProperties xmi:id="_HAS_AEnbEeqBv_2bIB2tRQ" position="38.0,-43.0"/>
+      <stereotypes xmi:id="_Aw4hUE67EeqjzPgac6vnmA" name="JoinColumns">
+        <modelElement href="IMS-Backend.uml#_Aw028E67EeqjzPgac6vnmA"/>
+      </stereotypes>
       <visibility xmi:id="_G63sdEnbEeqBv_2bIB2tRQ" label="+"/>
       <cardinality xmi:id="_G63sdUnbEeqBv_2bIB2tRQ" label="1" max="1" min="1"/>
     </sourceRole>
@@ -168,8 +171,8 @@
       </stereotypes>
       <visibility xmi:id="_GHNYIkldEeqoWa5qGecVhQ" label="+"/>
       <cardinality xmi:id="_GHNYI0ldEeqoWa5qGecVhQ" label="1" max="1" min="1"/>
-      <type xmi:id="_HWJ3gEldEeqoWa5qGecVhQ" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <type xmi:id="_2JRGkE6zEeqjzPgac6vnmA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
       </type>
     </attributes>
     <attributes xmi:id="_Ronl2UldEeqoWa5qGecVhQ" name="seller">
@@ -191,7 +194,7 @@
     <attributes xmi:id="_yvpwUEnaEeqBv_2bIB2tRQ" name="buyer">
       <modelElement href="IMS-Backend.uml#_yvnUEUnaEeqBv_2bIB2tRQ"/>
       <visibility xmi:id="_yvpwUUnaEeqBv_2bIB2tRQ" label="+"/>
-      <cardinality xmi:id="_yvpwUknaEeqBv_2bIB2tRQ" label="*" max="-1"/>
+      <cardinality xmi:id="_yvpwUknaEeqBv_2bIB2tRQ" label="1" max="1" min="1"/>
       <type xmi:id="_yvpwU0naEeqBv_2bIB2tRQ" name="Customer">
         <modelElement href="IMS-Backend.uml#_zapV4EldEeqoWa5qGecVhQ"/>
       </type>
@@ -540,6 +543,10 @@
     </attributes>
     <attributes xmi:id="_G63seUnbEeqBv_2bIB2tRQ" name="transaction">
       <modelElement href="IMS-Backend.uml#_G60pIUnbEeqBv_2bIB2tRQ"/>
+      <stereotypes xmi:id="_AxAdIE67EeqjzPgac6vnmA" name="JoinColumns"/>
+      <stereotypes xmi:id="_96tyIFH_Eeq9Gue8S4ubNg" name="JoinColumns"/>
+      <stereotypes xmi:id="_96uZMFH_Eeq9Gue8S4ubNg" name="JoinColumns"/>
+      <stereotypes xmi:id="_961G4FH_Eeq9Gue8S4ubNg" name="JoinColumns"/>
       <visibility xmi:id="_G63seknbEeqBv_2bIB2tRQ" label="+"/>
       <cardinality xmi:id="_G63se0nbEeqBv_2bIB2tRQ" label="1" max="1" min="1"/>
       <type xmi:id="_G63sfEnbEeqBv_2bIB2tRQ" name="Transaction">
@@ -600,6 +607,12 @@
       <stereotypes xmi:id="_YIe3AErjEeqt2ILb0Y3UWA" name="JoinColumns"/>
       <stereotypes xmi:id="_YIfeEErjEeqt2ILb0Y3UWA" name="JoinColumns"/>
       <stereotypes xmi:id="_YIkWkErjEeqt2ILb0Y3UWA" name="JoinColumns"/>
+      <stereotypes xmi:id="_SJ6zEE6iEeqjzPgac6vnmA" name="JoinColumns"/>
+      <stereotypes xmi:id="_SJ7aIE6iEeqjzPgac6vnmA" name="JoinColumns"/>
+      <stereotypes xmi:id="_SKD9AE6iEeqjzPgac6vnmA" name="JoinColumns"/>
+      <stereotypes xmi:id="_96mdYFH_Eeq9Gue8S4ubNg" name="JoinColumns"/>
+      <stereotypes xmi:id="_96pgsFH_Eeq9Gue8S4ubNg" name="JoinColumns"/>
+      <stereotypes xmi:id="_961t8FH_Eeq9Gue8S4ubNg" name="JoinColumns"/>
       <visibility xmi:id="_r3lCYTdcEeqx0sH5IrB7jA" label="+"/>
       <cardinality xmi:id="_r3lCYjdcEeqx0sH5IrB7jA" label="1" max="1" min="1"/>
       <type xmi:id="_r3lCYzdcEeqx0sH5IrB7jA" name="Employee">
