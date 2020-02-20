@@ -13,7 +13,7 @@ import com.ali.hyacinth.ims.model.Transaction;
 public interface TransactionRepository extends PagingAndSortingRepository<Transaction, Long> {
 	
 	List<Transaction> findAllByBuyer(Customer buyer);
-	List<Transaction> findAllByCustomer(Customer customer);
+	//List<Transaction> findAllByCustomer(Customer customer);
 	Transaction findByDate(Date date);
 
 }

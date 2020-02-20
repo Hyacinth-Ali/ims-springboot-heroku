@@ -1,5 +1,7 @@
 package com.ali.hyacinth.ims.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity(name = "products")
-public class Product {
+public class Product implements Serializable {
+	
+	private static final long serialVersionUID = 7091303478542316555L;
+	
 	private double itemPrice;
 
 	public void setItemPrice(double value) {

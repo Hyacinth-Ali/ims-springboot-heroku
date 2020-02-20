@@ -1,7 +1,9 @@
 package com.ali.hyacinth.ims.model;
 
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -11,8 +13,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name = "employees")
-public class Employee {
+@Entity
+@Table(name="employees")
+public class Employee implements Serializable {
+private Set<Address> addresss;
+
+@OneToMany(mappedBy="employee", cascade={CascadeType.ALL})
+public Set<Address> getAddresss() {
+   return this.addresss;
+}
+
+public void setAddresss(Set<Address> addressss) {
+   this.addresss = addressss;
+}
+
+	
+	
+	private static final long serialVersionUID = 8282812751828419590L;
+	
 	private String employeeId;
 
 	public void setEmployeeId(String value) {
@@ -33,17 +51,6 @@ public class Employee {
 
 	public void setSales(Set<Transaction> saless) {
 		this.sales = saless;
-	}
-
-	private List<Address> addresses;
-
-	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-	public List<Address> getAddresses() {
-		return this.addresses;
-	}
-
-	public void setAddresses(List<Address> addresss) {
-		this.addresses = addresss;
 	}
 
 	private String password;

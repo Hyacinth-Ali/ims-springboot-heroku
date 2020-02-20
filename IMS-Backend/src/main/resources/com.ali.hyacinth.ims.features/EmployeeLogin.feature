@@ -2,7 +2,6 @@
 Feature: Employee login
   As an employee, I want to sign in to IMS
 
- 
   Scenario Outline: Log in to IMS
   	Given IMS has the following employees
   	 |user_name | password |

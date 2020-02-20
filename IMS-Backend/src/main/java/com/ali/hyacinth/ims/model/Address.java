@@ -1,14 +1,12 @@
 package com.ali.hyacinth.ims.model;
 
-import javax.persistence.ManyToOne;
-
-import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "addresses")
 public class Address implements Serializable {
@@ -30,7 +28,7 @@ public class Address implements Serializable {
 		this.addressId = value;
 	}
 
-	@Column(length = 30, nullable = false)
+	@Column(nullable = false, length = 30)
 	public String getAddressId() {
 		return this.addressId;
 	}
@@ -41,7 +39,7 @@ public class Address implements Serializable {
 		this.city = value;
 	}
 
-	@Column(length = 30, nullable = false)
+	@Column(nullable = false, length = 30)
 	public String getCity() {
 		return this.city;
 	}
@@ -52,7 +50,7 @@ public class Address implements Serializable {
 		this.country = value;
 	}
 
-	@Column(length = 30, nullable = false)
+	@Column(nullable = false, length = 30)
 	public String getCountry() {
 		return this.country;
 	}
@@ -63,7 +61,7 @@ public class Address implements Serializable {
 		this.streetName = value;
 	}
 
-	@Column(length = 100, nullable = false)
+	@Column(nullable = false, length = 100)
 	public String getStreetName() {
 		return this.streetName;
 	}
@@ -74,7 +72,7 @@ public class Address implements Serializable {
 		this.postalCode = value;
 	}
 
-	@Column(length = 7, nullable = false)
+	@Column(nullable = false, length = 7)
 	public String getPostalCode() {
 		return this.postalCode;
 	}
@@ -85,7 +83,7 @@ public class Address implements Serializable {
 		this.type = value;
 	}
 
-	@Column(length = 10, nullable = false)
+	@Column(nullable = false, length = 10)
 	public String getType() {
 		return this.type;
 	}
@@ -93,15 +91,13 @@ public class Address implements Serializable {
 	private Employee employee;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "users_id")
 	public Employee getEmployee() {
 		return this.employee;
 	}
 
-	public void setEmployee(Employee user) {
-		this.employee = user;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	private static final long serialVersionUID = -5606520411628590064L;
-
 }

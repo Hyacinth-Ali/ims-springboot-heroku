@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_In-PICspEeqIwr50XatQew" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_In-PISspEeqIwr50XatQew" source="codegen">
         <details xmi:id="_In-PIispEeqIwr50XatQew" key="codegenDirectory" value="/IMS-Backend/src/main/java"/>
-        <details xmi:id="_JZ9swCspEeqIwr50XatQew" key="AssociatedSourceCode" value="/IMS-Backend/src/main/java/com/ali/hyacinth/ims/ImsBackendApplication.java;2298010148/1;/IMS-Backend/src/test/java/com/ali/hyacinth/ims/ImsBackendApplicationTests.java;4065897284/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Address.java;811179049/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Employee.java;2684319301/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/CEO.java;118102375/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Transaction.java;2602368939/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Customer.java;3738600951/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Product.java;2949792785/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/ProductTransaction.java;700299665/1;"/>
+        <details xmi:id="_JZ9swCspEeqIwr50XatQew" key="AssociatedSourceCode" value="/IMS-Backend/src/main/java/com/ali/hyacinth/ims/ImsBackendApplication.java;2298010148/1;/IMS-Backend/src/test/java/com/ali/hyacinth/ims/ImsBackendApplicationTests.java;4065897284/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Address.java;539937987/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Employee.java;2681897203/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/CEO.java;1594280776/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Transaction.java;3013721905/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Customer.java;2015292093/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/Product.java;1712492492/1;/IMS-Backend/src/main/java/com/ali/hyacinth/ims/model/ProductTransaction.java;4232031962/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_IuiKICspEeqIwr50XatQew">
@@ -64,10 +64,6 @@
                 <ownedAttribute xmi:id="_tYQgECspEeqIwr50XatQew" name="encryptedPassword">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_QYgYwDdJEeqx0sH5IrB7jA" name="addresses" type="_oALfkDdHEeqx0sH5IrB7jA" isOrdered="true" aggregation="composite" association="_XLQTYDdTEeqx0sH5IrB7jA">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QYgYwTdJEeqx0sH5IrB7jA"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QYgYwjdJEeqx0sH5IrB7jA" value="*"/>
-                </ownedAttribute>
                 <ownedAttribute xmi:id="_EjM5oElbEeqoWa5qGecVhQ" name="employeeId" visibility="public">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
@@ -75,36 +71,12 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RolwpEldEeqoWa5qGecVhQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RolwpUldEeqoWa5qGecVhQ" value="*"/>
                 </ownedAttribute>
+                <ownedAttribute xmi:id="_BJJYslOPEeqdK_SdNfODWg" name="addresss" type="_9yYRMFOOEeqdK_SdNfODWg" aggregation="composite" association="_BJFuUFOPEeqdK_SdNfODWg">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BJJ_wFOPEeqdK_SdNfODWg"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BJJ_wVOPEeqdK_SdNfODWg" value="*"/>
+                </ownedAttribute>
+                <interfaceRealization xmi:id="_R4tIQFN5EeqkfakAj7FL5w" client="_tWqkoCspEeqIwr50XatQew" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
-              <packagedElement xmi:type="uml:Class" xmi:id="_oALfkDdHEeqx0sH5IrB7jA" name="Address">
-                <ownedAttribute xmi:id="_QYfxsDdJEeqx0sH5IrB7jA" name="employee" type="_tWqkoCspEeqIwr50XatQew" association="_XLQTYDdTEeqx0sH5IrB7jA">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QYfxsTdJEeqx0sH5IrB7jA" value="1"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QYfxsjdJEeqx0sH5IrB7jA" value="1"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_WRz5ADdKEeqx0sH5IrB7jA" name="id" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_aPFm4DdKEeqx0sH5IrB7jA" name="addressId" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_bL8QsDdKEeqx0sH5IrB7jA" name="city" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_boiGEDdKEeqx0sH5IrB7jA" name="country" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_cB0v0DdKEeqx0sH5IrB7jA" name="streetName" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_sgzDsDdKEeqx0sH5IrB7jA" name="postalCode" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_tCKrYDdKEeqx0sH5IrB7jA" name="type" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
-                <interfaceRealization xmi:id="_eh-DQDdIEeqx0sH5IrB7jA" client="_oALfkDdHEeqx0sH5IrB7jA" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
-              </packagedElement>
-              <packagedElement xmi:type="uml:Association" xmi:id="_XLQTYDdTEeqx0sH5IrB7jA" name="" memberEnd="_QYgYwDdJEeqx0sH5IrB7jA _QYfxsDdJEeqx0sH5IrB7jA"/>
               <packagedElement xmi:type="uml:Class" xmi:id="_UQkxcElbEeqoWa5qGecVhQ" name="CEO">
                 <ownedAttribute xmi:id="_WMOl0ElbEeqoWa5qGecVhQ" name="password" visibility="public">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -125,10 +97,6 @@
                 <ownedAttribute xmi:id="_zpjmgElbEeqoWa5qGecVhQ" name="ceoId" visibility="public">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_Tky-okldEeqoWa5qGecVhQ" name="transactions" type="_EA3MIElcEeqoWa5qGecVhQ" association="_TkyXkEldEeqoWa5qGecVhQ">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Tky-o0ldEeqoWa5qGecVhQ"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Tky-pEldEeqoWa5qGecVhQ" value="*"/>
-                </ownedAttribute>
                 <interfaceRealization xmi:id="_FzwSME6jEeqjzPgac6vnmA" client="_UQkxcElbEeqoWa5qGecVhQ" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_EA3MIElcEeqoWa5qGecVhQ" name="Transaction">
@@ -138,16 +106,9 @@
                 <ownedAttribute xmi:id="_Ai73QEldEeqoWa5qGecVhQ" name="amountPaid" visibility="public">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_GHNYIEldEeqoWa5qGecVhQ" name="id" visibility="public">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-                </ownedAttribute>
                 <ownedAttribute xmi:id="_RolwoEldEeqoWa5qGecVhQ" name="seller" type="_tWqkoCspEeqIwr50XatQew" association="_RolJkEldEeqoWa5qGecVhQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RolwoUldEeqoWa5qGecVhQ" value="1"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RolwokldEeqoWa5qGecVhQ" value="1"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_TkyXkUldEeqoWa5qGecVhQ" name="cEO" type="_UQkxcElbEeqoWa5qGecVhQ" association="_TkyXkEldEeqoWa5qGecVhQ">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Tky-oEldEeqoWa5qGecVhQ" value="1"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Tky-oUldEeqoWa5qGecVhQ" value="1"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_yvnUEUnaEeqBv_2bIB2tRQ" name="buyer" type="_zapV4EldEeqoWa5qGecVhQ" association="_yvmtAEnaEeqBv_2bIB2tRQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yvnUEknaEeqBv_2bIB2tRQ" value="1"/>
@@ -157,13 +118,16 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G61QM0nbEeqBv_2bIB2tRQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G61QNEnbEeqBv_2bIB2tRQ" value="*"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_waPaEEqIEeqt2ILb0Y3UWA" name="amountUnpaid" isReadOnly="true">
+                <ownedAttribute xmi:id="_waPaEEqIEeqt2ILb0Y3UWA" name="amountUnpaid">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_zOYDsEqKEeqt2ILb0Y3UWA" name="date" type="_zOR9EEqKEeqt2ILb0Y3UWA"/>
+                <ownedAttribute xmi:id="_ondLkFOOEeqdK_SdNfODWg" name="id" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+                </ownedAttribute>
+                <interfaceRealization xmi:id="_gpO9UFN5EeqkfakAj7FL5w" client="_EA3MIElcEeqoWa5qGecVhQ" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
               <packagedElement xmi:type="uml:Association" xmi:id="_RolJkEldEeqoWa5qGecVhQ" name="" memberEnd="_RolwoEldEeqoWa5qGecVhQ _Rolwo0ldEeqoWa5qGecVhQ"/>
-              <packagedElement xmi:type="uml:Association" xmi:id="_TkyXkEldEeqoWa5qGecVhQ" name="" memberEnd="_TkyXkUldEeqoWa5qGecVhQ _Tky-okldEeqoWa5qGecVhQ"/>
               <packagedElement xmi:type="uml:Class" xmi:id="_zapV4EldEeqoWa5qGecVhQ" name="Customer">
                 <ownedAttribute xmi:id="_7H9m4EldEeqoWa5qGecVhQ" name="firstName" visibility="public">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -181,6 +145,7 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yvmtAknaEeqBv_2bIB2tRQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yvnUEEnaEeqBv_2bIB2tRQ" value="*"/>
                 </ownedAttribute>
+                <interfaceRealization xmi:id="_8jZ-oFN4EeqkfakAj7FL5w" client="_zapV4EldEeqoWa5qGecVhQ" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_3V70YEnZEeqBv_2bIB2tRQ" name="Product">
                 <ownedAttribute xmi:id="_5wo8QEnZEeqBv_2bIB2tRQ" name="itemPrice" visibility="public">
@@ -199,6 +164,7 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xuEXhEnaEeqBv_2bIB2tRQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xuE-kEnaEeqBv_2bIB2tRQ" value="1"/>
                 </ownedAttribute>
+                <interfaceRealization xmi:id="_V--aEFN5EeqkfakAj7FL5w" client="_3V70YEnZEeqBv_2bIB2tRQ" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_Zll7oEnaEeqBv_2bIB2tRQ" name="ProductTransaction">
                 <ownedAttribute xmi:id="_pn0CEEnaEeqBv_2bIB2tRQ" name="price" visibility="public">
@@ -218,10 +184,57 @@
                 <ownedAttribute xmi:id="_CXImEEncEeqBv_2bIB2tRQ" name="id" visibility="public">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
                 </ownedAttribute>
+                <interfaceRealization xmi:id="_dScnsFN5EeqkfakAj7FL5w" client="_Zll7oEnaEeqBv_2bIB2tRQ" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
               </packagedElement>
               <packagedElement xmi:type="uml:Association" xmi:id="_xuDwcEnaEeqBv_2bIB2tRQ" name="" memberEnd="_xuEXgEnaEeqBv_2bIB2tRQ _xuEXg0naEeqBv_2bIB2tRQ"/>
               <packagedElement xmi:type="uml:Association" xmi:id="_yvmtAEnaEeqBv_2bIB2tRQ" name="" memberEnd="_yvmtAUnaEeqBv_2bIB2tRQ _yvnUEUnaEeqBv_2bIB2tRQ"/>
               <packagedElement xmi:type="uml:Association" xmi:id="_G60pIEnbEeqBv_2bIB2tRQ" name="" memberEnd="_G60pIUnbEeqBv_2bIB2tRQ _G61QMknbEeqBv_2bIB2tRQ"/>
+              <packagedElement xmi:type="uml:Class" xmi:id="_9yYRMFOOEeqdK_SdNfODWg" name="Address" visibility="public">
+                <ownedAttribute xmi:id="_9yYRMVOOEeqdK_SdNfODWg" name="id" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_9yYRMlOOEeqdK_SdNfODWg" name="addressId" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_9yYRM1OOEeqdK_SdNfODWg" name="city" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_9yYRNFOOEeqdK_SdNfODWg" name="country" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_9yYRNVOOEeqdK_SdNfODWg" name="streetName" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_9yYRNlOOEeqdK_SdNfODWg" name="postalCode" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_9yYRN1OOEeqdK_SdNfODWg" name="type" visibility="public">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_BJGVYFOPEeqdK_SdNfODWg" name="employee" type="_tWqkoCspEeqIwr50XatQew" association="_BJFuUFOPEeqdK_SdNfODWg">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BJJYsFOPEeqdK_SdNfODWg" value="1"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BJJYsVOPEeqdK_SdNfODWg" value="1"/>
+                </ownedAttribute>
+                <interfaceRealization xmi:id="_9yYROFOOEeqdK_SdNfODWg" visibility="public" client="_9yYRMFOOEeqdK_SdNfODWg" supplier="_ehzrMDdIEeqx0sH5IrB7jA" contract="_ehzrMDdIEeqx0sH5IrB7jA"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:OpaqueBehavior" xmi:id="_9yY4QFOOEeqdK_SdNfODWg" name="getId" visibility="public" specification="_9yatc1OOEeqdK_SdNfODWg" isReentrant="true">
+                <ownedParameter xmi:id="_9yY4QVOOEeqdK_SdNfODWg" visibility="public" direction="return" effect="create">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.id;
+	</body>
+              </packagedElement>
+              <packagedElement xmi:type="uml:OpaqueBehavior" xmi:id="_9yY4QlOOEeqdK_SdNfODWg" name="setId" visibility="public" specification="_9yatdVOOEeqdK_SdNfODWg" isReentrant="true">
+                <ownedParameter xmi:id="_9yY4Q1OOEeqdK_SdNfODWg" name="value" visibility="public" effect="create">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>this.id = value;
+	</body>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_BJFuUFOPEeqdK_SdNfODWg" name="" memberEnd="_BJGVYFOPEeqdK_SdNfODWg _BJJYslOPEeqdK_SdNfODWg"/>
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_IucDgCspEeqIwr50XatQew" name="ImsBackendApplication">
               <ownedAttribute xmi:id="_W9aUcEoGEeqnOe8GYZITow" name="currentEmployees" visibility="public" isStatic="true" type="_tWqkoCspEeqIwr50XatQew" isOrdered="true" isReadOnly="true" association="_W9cJoEoGEeqnOe8GYZITow">
@@ -411,6 +424,7 @@
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_WoLGYTdREeqx0sH5IrB7jA" name="CascadeType"/>
         <packagedElement xmi:type="uml:Interface" xmi:id="_jXAFYElYEeqoWa5qGecVhQ" name="MappedSuperclass"/>
         <packagedElement xmi:type="uml:Interface" xmi:id="_m8JJMEneEeqBv_2bIB2tRQ" name="OneToOne"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_TwDNwFNgEeqkfakAj7FL5w" name="Table"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_ehvZwDdIEeqx0sH5IrB7jA" name="java">
@@ -463,7 +477,6 @@
   <UMLLabProfile:Reference xmi:id="_Iu59kCspEeqIwr50XatQew" base_Element="_Iu4vcCspEeqIwr50XatQew"/>
   <UMLLabProfile:Reference xmi:id="_Iu7ywCspEeqIwr50XatQew" base_Element="_Iu6koCspEeqIwr50XatQew"/>
   <UMLLabProfile:Reference xmi:id="_Iu9A4CspEeqIwr50XatQew" base_Element="_Iu7ywSspEeqIwr50XatQew"/>
-  <Persistency:Entity xmi:id="_tWsZ0CspEeqIwr50XatQew" base_Class="_tWqkoCspEeqIwr50XatQew" entityName="employees"/>
   <Persistency:JPA1StyledElement xmi:id="_tWtn8CspEeqIwr50XatQew" base_Element="_tWqkoCspEeqIwr50XatQew"/>
   <UMLLabProfile:Reference xmi:id="_tXC_ICspEeqIwr50XatQew" base_Element="_tW6cQCspEeqIwr50XatQew"/>
   <UMLLabProfile:Reference xmi:id="_tXH3oCspEeqIwr50XatQew" base_Element="_tXC_ISspEeqIwr50XatQew"/>
@@ -509,37 +522,12 @@
     <body>this.id = value;
 	</body>
   </uml:OpaqueBehavior>
-  <Persistency:JPA1StyledElement xmi:id="_ehuLoDdIEeqx0sH5IrB7jA" base_Element="_oALfkDdHEeqx0sH5IrB7jA"/>
-  <Persistency:Entity xmi:id="_ehuysDdIEeqx0sH5IrB7jA" base_Class="_oALfkDdHEeqx0sH5IrB7jA" entityName="addresses"/>
   <UMLLabProfile:Reference xmi:id="_eh81IDdIEeqx0sH5IrB7jA" base_Element="_ehzrMDdIEeqx0sH5IrB7jA"/>
-  <Persistency:TechnicalSupplement xmi:id="_gryPcDdIEeqx0sH5IrB7jA" base_Classifier="_oALfkDdHEeqx0sH5IrB7jA" serialVersionUID="-5606520411628590064"/>
   <UMLLabProfile:Reference xmi:id="_p7mN8DdIEeqx0sH5IrB7jA" base_Element="_p7guYDdIEeqx0sH5IrB7jA"/>
   <UMLLabProfile:Reference xmi:id="_EuM4UDdKEeqx0sH5IrB7jA" base_Element="_EuIm4DdKEeqx0sH5IrB7jA"/>
   <UMLLabProfile:Reference xmi:id="_EuQisDdKEeqx0sH5IrB7jA" base_Element="_EuM4UTdKEeqx0sH5IrB7jA"/>
   <UMLLabProfile:Reference xmi:id="_8W9EEDdKEeqx0sH5IrB7jA" base_Element="_8W5ZsDdKEeqx0sH5IrB7jA"/>
-  <Persistency:Column xmi:id="_bJl1YDdMEeqx0sH5IrB7jA" base_Property="_aPFm4DdKEeqx0sH5IrB7jA" nullable="false" length="30"/>
-  <Persistency:Column xmi:id="_bJqG0DdMEeqx0sH5IrB7jA" base_Property="_bL8QsDdKEeqx0sH5IrB7jA" nullable="false" length="30"/>
-  <Persistency:Column xmi:id="_bJuYQDdMEeqx0sH5IrB7jA" base_Property="_boiGEDdKEeqx0sH5IrB7jA" nullable="false" length="30"/>
-  <Persistency:Column xmi:id="_bJzQwDdMEeqx0sH5IrB7jA" base_Property="_cB0v0DdKEeqx0sH5IrB7jA" nullable="false" length="100"/>
-  <Persistency:Column xmi:id="_bJ3iMDdMEeqx0sH5IrB7jA" base_Property="_sgzDsDdKEeqx0sH5IrB7jA" nullable="false" length="7"/>
-  <Persistency:Column xmi:id="_bKAsIDdMEeqx0sH5IrB7jA" base_Property="_tCKrYDdKEeqx0sH5IrB7jA" nullable="false" length="10"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_bKDvcDdMEeqx0sH5IrB7jA" base_Element="_WRz5ADdKEeqx0sH5IrB7jA">
-    <associatedElement xmi:type="uml:Operation" xmi:id="_bKDvcTdMEeqx0sH5IrB7jA" name="getId" method="_bKIn8DdMEeqx0sH5IrB7jA">
-      <ownedParameter xmi:id="_bKGywDdMEeqx0sH5IrB7jA" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </ownedParameter>
-    </associatedElement>
-    <associatedElement xmi:type="uml:Operation" xmi:id="_bKGywTdMEeqx0sH5IrB7jA" name="setId" method="_bKIn8jdMEeqx0sH5IrB7jA">
-      <ownedParameter xmi:id="_bKGywjdMEeqx0sH5IrB7jA" name="value">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </ownedParameter>
-    </associatedElement>
-  </UMLLabProfile:LegacyStyledElement>
-  <UMLLabProfile:Annotations xmi:id="_bKE9kDdMEeqx0sH5IrB7jA" base_Element="_bKDvcTdMEeqx0sH5IrB7jA">
-    <annotations xmi:id="_bKE9kTdMEeqx0sH5IrB7jA" name="Id"/>
-    <annotations xmi:id="_bKE9kjdMEeqx0sH5IrB7jA" name="GeneratedValue"/>
-  </UMLLabProfile:Annotations>
-  <uml:OpaqueBehavior xmi:id="_bKIn8DdMEeqx0sH5IrB7jA" name="getId" specification="_bKDvcTdMEeqx0sH5IrB7jA">
+  <uml:OpaqueBehavior xmi:id="_bKIn8DdMEeqx0sH5IrB7jA" name="getId">
     <ownedParameter xmi:id="_bKIn8TdMEeqx0sH5IrB7jA" direction="return">
       <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
@@ -548,7 +536,7 @@
     <body>return this.id;
 	</body>
   </uml:OpaqueBehavior>
-  <uml:OpaqueBehavior xmi:id="_bKIn8jdMEeqx0sH5IrB7jA" name="setId" specification="_bKGywTdMEeqx0sH5IrB7jA">
+  <uml:OpaqueBehavior xmi:id="_bKIn8jdMEeqx0sH5IrB7jA" name="setId">
     <ownedParameter xmi:id="_bKIn8zdMEeqx0sH5IrB7jA" name="value">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
     </ownedParameter>
@@ -556,9 +544,6 @@
     <body>this.id = value;
 	</body>
   </uml:OpaqueBehavior>
-  <Persistency:JoinColumns xmi:id="_rai7YDdMEeqx0sH5IrB7jA" base_Property="_QYfxsDdJEeqx0sH5IrB7jA">
-    <columns xmi:id="_LzoikDdNEeqx0sH5IrB7jA" label="users_id" unique="true"/>
-  </Persistency:JoinColumns>
   <UMLLabProfile:Reference xmi:id="_ra6HwDdMEeqx0sH5IrB7jA" base_Element="_ra2dYDdMEeqx0sH5IrB7jA"/>
   <UMLLabProfile:Reference xmi:id="_WoLGYDdREeqx0sH5IrB7jA" base_Element="_WoHcADdREeqx0sH5IrB7jA"/>
   <UMLLabProfile:Reference xmi:id="_WoOJsDdREeqx0sH5IrB7jA" base_Element="_WoLGYTdREeqx0sH5IrB7jA"/>
@@ -624,7 +609,6 @@
   <Persistency:Column xmi:id="_8t2XcEndEeqBv_2bIB2tRQ" base_Property="_eio3IElbEeqoWa5qGecVhQ" nullable="false" length="120" unique="true"/>
   <Persistency:Column xmi:id="_MGk08EneEeqBv_2bIB2tRQ" base_Property="_iUCFIElbEeqoWa5qGecVhQ" nullable="false"/>
   <Persistency:Column xmi:id="_OdUC0EneEeqBv_2bIB2tRQ" base_Property="_zpjmgElbEeqoWa5qGecVhQ" nullable="false"/>
-  <Persistency:Entity xmi:id="_fyrMIEneEeqBv_2bIB2tRQ" base_Class="_zapV4EldEeqoWa5qGecVhQ" entityName="customers"/>
   <Persistency:Column xmi:id="_fyvdkEneEeqBv_2bIB2tRQ" base_Property="_7H9m4EldEeqoWa5qGecVhQ" nullable="false" length="50"/>
   <Persistency:Column xmi:id="_fy0WEEneEeqBv_2bIB2tRQ" base_Property="_9MPy0EldEeqoWa5qGecVhQ" nullable="false" length="50"/>
   <Persistency:Column xmi:id="_fy8R4EneEeqBv_2bIB2tRQ" base_Property="_uEdB8EnZEeqBv_2bIB2tRQ" nullable="false" length="50"/>
@@ -684,6 +668,7 @@
   </UMLLabProfile:Annotations>
   <uml:OpaqueBehavior xmi:id="_zGb70EneEeqBv_2bIB2tRQ" name="getId" specification="_zGatsUneEeqBv_2bIB2tRQ">
     <ownedParameter xmi:id="_zGb70UneEeqBv_2bIB2tRQ" direction="return">
+      <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
     </ownedParameter>
     <language>java</language>
@@ -734,37 +719,16 @@
     <annotations xmi:id="_LzGC0UnfEeqBv_2bIB2tRQ" name="Id"/>
     <annotations xmi:id="_LzGC0knfEeqBv_2bIB2tRQ" name="GeneratedValue"/>
   </UMLLabProfile:Annotations>
-  <Persistency:Entity xmi:id="_YzSisEnfEeqBv_2bIB2tRQ" base_Class="_EA3MIElcEeqoWa5qGecVhQ" entityName="transactions"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_YzVmAknfEeqBv_2bIB2tRQ" base_Element="_GHNYIEldEeqoWa5qGecVhQ">
-    <associatedElement xmi:type="uml:Operation" xmi:id="_YzWNEEnfEeqBv_2bIB2tRQ" name="getId" method="_YzYCQEnfEeqBv_2bIB2tRQ">
-      <ownedParameter xmi:id="_YzW0IUnfEeqBv_2bIB2tRQ" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </ownedParameter>
-    </associatedElement>
-    <associatedElement xmi:type="uml:Operation" xmi:id="_YzXbMEnfEeqBv_2bIB2tRQ" name="setId" method="_YzYCQknfEeqBv_2bIB2tRQ">
-      <ownedParameter xmi:id="_YzXbMUnfEeqBv_2bIB2tRQ" name="value">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedParameter>
-    </associatedElement>
-    <associatedElement xmi:type="uml:Operation" xmi:id="_PJz9cE61EeqjzPgac6vnmA" name="setId" method="_PJ1LkE61EeqjzPgac6vnmA">
-      <ownedParameter xmi:id="_PJz9cU61EeqjzPgac6vnmA" name="value">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </ownedParameter>
-    </associatedElement>
-  </UMLLabProfile:LegacyStyledElement>
-  <UMLLabProfile:Annotations xmi:id="_YzWNEUnfEeqBv_2bIB2tRQ" base_Element="_YzWNEEnfEeqBv_2bIB2tRQ">
-    <annotations xmi:id="_YzWNEknfEeqBv_2bIB2tRQ" name="Id"/>
-    <annotations xmi:id="_YzWNE0nfEeqBv_2bIB2tRQ" name="GeneratedValue"/>
-  </UMLLabProfile:Annotations>
-  <uml:OpaqueBehavior xmi:id="_YzYCQEnfEeqBv_2bIB2tRQ" name="getId" specification="_YzWNEEnfEeqBv_2bIB2tRQ">
+  <uml:OpaqueBehavior xmi:id="_YzYCQEnfEeqBv_2bIB2tRQ" name="getId">
     <ownedParameter xmi:id="_ohhMkE61EeqjzPgac6vnmA" direction="return">
+      <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
     </ownedParameter>
     <language>java</language>
     <body>return this.id;
 	</body>
   </uml:OpaqueBehavior>
-  <uml:OpaqueBehavior xmi:id="_YzYCQknfEeqBv_2bIB2tRQ" name="setId" specification="_YzXbMEnfEeqBv_2bIB2tRQ">
+  <uml:OpaqueBehavior xmi:id="_YzYCQknfEeqBv_2bIB2tRQ" name="setId">
     <ownedParameter xmi:id="_YzYCQ0nfEeqBv_2bIB2tRQ" name="value">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedParameter>
@@ -781,6 +745,11 @@
   <UMLLabProfile:LegacyStyledElement xmi:id="_waQBIEqIEeqt2ILb0Y3UWA" base_Element="_waPaEEqIEeqt2ILb0Y3UWA">
     <associatedElement xmi:type="uml:Operation" xmi:id="_waQBIUqIEeqt2ILb0Y3UWA" name="getAmountUnpaid" method="_waRPQEqIEeqt2ILb0Y3UWA">
       <ownedParameter xmi:id="_waQoMEqIEeqt2ILb0Y3UWA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </ownedParameter>
+    </associatedElement>
+    <associatedElement xmi:type="uml:Operation" xmi:id="_7AfZMFNeEeqkfakAj7FL5w" name="setAmountUnpaid" method="_7AgnUFNeEeqkfakAj7FL5w">
+      <ownedParameter xmi:id="_7AfZMVNeEeqkfakAj7FL5w" name="amountUnpaid">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
       </ownedParameter>
     </associatedElement>
@@ -857,15 +826,96 @@
 	</body>
   </uml:OpaqueBehavior>
   <UMLLabProfile:StyledElement xmi:id="_9Zq8oE60EeqjzPgac6vnmA" base_Element="_9ZqVkE60EeqjzPgac6vnmA"/>
-  <uml:OpaqueBehavior xmi:id="_PJ1LkE61EeqjzPgac6vnmA" name="setId" specification="_PJz9cE61EeqjzPgac6vnmA">
-    <ownedParameter xmi:id="_PJ1LkU61EeqjzPgac6vnmA" name="value">
+  <uml:OpaqueBehavior xmi:id="_PJ1LkE61EeqjzPgac6vnmA" name="setId">
+    <ownedParameter xmi:id="_PJ1LkU61EeqjzPgac6vnmA" name="id">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>this.id = id;
+	</body>
+  </uml:OpaqueBehavior>
+  <Persistency:JPA1StyledElement xmi:id="_2xQOEFNdEeqkfakAj7FL5w" base_Element="_WMOl0ElbEeqoWa5qGecVhQ"/>
+  <Persistency:JPA1StyledElement xmi:id="_2xQ1IFNdEeqkfakAj7FL5w" base_Element="_dBRLAElbEeqoWa5qGecVhQ"/>
+  <Persistency:JPA1StyledElement xmi:id="_2xQ1IVNdEeqkfakAj7FL5w" base_Element="_ddOuQElbEeqoWa5qGecVhQ"/>
+  <Persistency:JPA1StyledElement xmi:id="_2xQ1IlNdEeqkfakAj7FL5w" base_Element="_eio3IElbEeqoWa5qGecVhQ"/>
+  <Persistency:JPA1StyledElement xmi:id="_2xRcMFNdEeqkfakAj7FL5w" base_Element="_iUCFIElbEeqoWa5qGecVhQ"/>
+  <Persistency:JPA1StyledElement xmi:id="_2xRcMVNdEeqkfakAj7FL5w" base_Element="_zpjmgElbEeqoWa5qGecVhQ"/>
+  <uml:OpaqueBehavior xmi:id="_7AgnUFNeEeqkfakAj7FL5w" name="setAmountUnpaid" specification="_7AfZMFNeEeqkfakAj7FL5w">
+    <ownedParameter xmi:id="_7AgnUVNeEeqkfakAj7FL5w" name="amountUnpaid">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>this.amountUnpaid = amountUnpaid;
+	</body>
+  </uml:OpaqueBehavior>
+  <Persistency:Table xmi:id="_Tv0kQFNgEeqkfakAj7FL5w" tableName="employees" base_Classifier="_tWqkoCspEeqIwr50XatQew"/>
+  <UMLLabProfile:Reference xmi:id="_TwHfMFNgEeqkfakAj7FL5w" base_Element="_TwDNwFNgEeqkfakAj7FL5w"/>
+  <Persistency:Table xmi:id="_qAz6EFNgEeqkfakAj7FL5w" tableName="customers" base_Classifier="_zapV4EldEeqoWa5qGecVhQ"/>
+  <Persistency:Table xmi:id="_4AEqQFNgEeqkfakAj7FL5w" tableName="transactions" base_Classifier="_EA3MIElcEeqoWa5qGecVhQ"/>
+  <Persistency:TechnicalSupplement xmi:id="_AFSxAFN5EeqkfakAj7FL5w" base_Classifier="_zapV4EldEeqoWa5qGecVhQ" serialVersionUID="1642219633693293123"/>
+  <Persistency:TechnicalSupplement xmi:id="_R4o20FN5EeqkfakAj7FL5w" base_Classifier="_tWqkoCspEeqIwr50XatQew" serialVersionUID="8282812751828419590"/>
+  <Persistency:TechnicalSupplement xmi:id="_XVbPoFN5EeqkfakAj7FL5w" base_Classifier="_3V70YEnZEeqBv_2bIB2tRQ" serialVersionUID="7091303478542316555"/>
+  <Persistency:TechnicalSupplement xmi:id="_dSaLcFN5EeqkfakAj7FL5w" base_Classifier="_Zll7oEnaEeqBv_2bIB2tRQ" serialVersionUID="-7449099535184796784"/>
+  <Persistency:TechnicalSupplement xmi:id="_igEjIFN5EeqkfakAj7FL5w" base_Classifier="_EA3MIElcEeqoWa5qGecVhQ" serialVersionUID="-8943418603226944904"/>
+  <Persistency:JoinColumns xmi:id="_rw4xwFN6EeqkfakAj7FL5w" base_Property="_G60pIUnbEeqBv_2bIB2tRQ">
+    <columns xmi:id="_rw6m8FN6EeqkfakAj7FL5w" label="transaction_id" unique="true"/>
+  </Persistency:JoinColumns>
+  <Persistency:TechnicalSupplement xmi:id="_e7egYFOMEeqdK_SdNfODWg" base_Classifier="_UQkxcElbEeqoWa5qGecVhQ" serialVersionUID="-1343071302787757901"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_xUBTEFOOEeqdK_SdNfODWg" base_Element="_ondLkFOOEeqdK_SdNfODWg">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_xUBTEVOOEeqdK_SdNfODWg" name="getId" method="_xUDvUFOOEeqdK_SdNfODWg">
+      <ownedParameter xmi:id="_xUChMFOOEeqdK_SdNfODWg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </ownedParameter>
+    </associatedElement>
+    <associatedElement xmi:type="uml:Operation" xmi:id="_xUChMVOOEeqdK_SdNfODWg" name="setId" method="_xUDvUlOOEeqdK_SdNfODWg">
+      <ownedParameter xmi:id="_xUChMlOOEeqdK_SdNfODWg" name="value">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </ownedParameter>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
+  <UMLLabProfile:Annotations xmi:id="_xUB6IFOOEeqdK_SdNfODWg" base_Element="_xUBTEVOOEeqdK_SdNfODWg">
+    <annotations xmi:id="_xUB6IVOOEeqdK_SdNfODWg" name="Id"/>
+    <annotations xmi:id="_xUB6IlOOEeqdK_SdNfODWg" name="GeneratedValue"/>
+  </UMLLabProfile:Annotations>
+  <uml:OpaqueBehavior xmi:id="_xUDvUFOOEeqdK_SdNfODWg" name="getId" specification="_xUBTEVOOEeqdK_SdNfODWg">
+    <ownedParameter xmi:id="_xUDvUVOOEeqdK_SdNfODWg" direction="return">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>return this.id;
+	</body>
+  </uml:OpaqueBehavior>
+  <uml:OpaqueBehavior xmi:id="_xUDvUlOOEeqdK_SdNfODWg" name="setId" specification="_xUChMVOOEeqdK_SdNfODWg">
+    <ownedParameter xmi:id="_xUDvU1OOEeqdK_SdNfODWg" name="value">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
     </ownedParameter>
     <language>java</language>
     <body>this.id = value;
 	</body>
   </uml:OpaqueBehavior>
-  <Persistency:JoinColumns xmi:id="_Aw028E67EeqjzPgac6vnmA" base_Property="_G60pIUnbEeqBv_2bIB2tRQ">
-    <columns xmi:id="_Aw2sIE67EeqjzPgac6vnmA" label="transaction_id" unique="true"/>
-  </Persistency:JoinColumns>
+  <Persistency:JPA1StyledElement xmi:id="_9yaGYFOOEeqdK_SdNfODWg" base_Element="_9yYRMFOOEeqdK_SdNfODWg" framework="undefined"/>
+  <Persistency:Entity xmi:id="_9yatcFOOEeqdK_SdNfODWg" base_Class="_9yYRMFOOEeqdK_SdNfODWg" entityName="addresses" cacheable="true" explicitPolymorphism="false"/>
+  <Persistency:TechnicalSupplement xmi:id="_9yatcVOOEeqdK_SdNfODWg" base_Classifier="_9yYRMFOOEeqdK_SdNfODWg" serialVersionUID="-5606520411628590064" identityHelpers="NONE" stringHelper="NONE" logger="false"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_9yatclOOEeqdK_SdNfODWg" base_Element="_9yYRMVOOEeqdK_SdNfODWg">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_9yatc1OOEeqdK_SdNfODWg" name="getId" visibility="public" method="_9yY4QFOOEeqdK_SdNfODWg">
+      <ownedParameter xmi:id="_9yatdFOOEeqdK_SdNfODWg" visibility="public" direction="return" effect="create">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </ownedParameter>
+    </associatedElement>
+    <associatedElement xmi:type="uml:Operation" xmi:id="_9yatdVOOEeqdK_SdNfODWg" name="setId" visibility="public" method="_9yY4QlOOEeqdK_SdNfODWg">
+      <ownedParameter xmi:id="_9yatdlOOEeqdK_SdNfODWg" name="value" visibility="public" effect="create">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </ownedParameter>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
+  <Persistency:Column xmi:id="_9yatd1OOEeqdK_SdNfODWg" base_Property="_9yYRMlOOEeqdK_SdNfODWg" nullable="false" insertable="true" updatable="true" precision="0" length="30" unique="false" scale="0"/>
+  <Persistency:Column xmi:id="_9yateFOOEeqdK_SdNfODWg" base_Property="_9yYRM1OOEeqdK_SdNfODWg" nullable="false" insertable="true" updatable="true" precision="0" length="30" unique="false" scale="0"/>
+  <Persistency:Column xmi:id="_9yateVOOEeqdK_SdNfODWg" base_Property="_9yYRNFOOEeqdK_SdNfODWg" nullable="false" insertable="true" updatable="true" precision="0" length="30" unique="false" scale="0"/>
+  <Persistency:Column xmi:id="_9yatelOOEeqdK_SdNfODWg" base_Property="_9yYRNVOOEeqdK_SdNfODWg" nullable="false" insertable="true" updatable="true" precision="0" length="100" unique="false" scale="0"/>
+  <Persistency:Column xmi:id="_9yate1OOEeqdK_SdNfODWg" base_Property="_9yYRNlOOEeqdK_SdNfODWg" nullable="false" insertable="true" updatable="true" precision="0" length="7" unique="false" scale="0"/>
+  <Persistency:Column xmi:id="_9yatfFOOEeqdK_SdNfODWg" base_Property="_9yYRN1OOEeqdK_SdNfODWg" nullable="false" insertable="true" updatable="true" precision="0" length="10" unique="false" scale="0"/>
+  <UMLLabProfile:Annotations xmi:id="_9yatfVOOEeqdK_SdNfODWg" base_Element="_9yatc1OOEeqdK_SdNfODWg">
+    <annotations xmi:id="_9yatflOOEeqdK_SdNfODWg" name="Id"/>
+    <annotations xmi:id="_9yatf1OOEeqdK_SdNfODWg" name="GeneratedValue"/>
+  </UMLLabProfile:Annotations>
 </xmi:XMI>

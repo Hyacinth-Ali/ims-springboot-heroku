@@ -1,20 +1,35 @@
 package com.ali.hyacinth.ims.model;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import java.util.Date;
-import java.util.Set;
-import javax.persistence.ManyToMany;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name = "transactions")
-public class Transaction {
-	
+@Entity
+@Table(name = "transactions")
+public class Transaction implements Serializable {
+	private long id;
+
+	public void setId(long value) {
+		this.id = value;
+	}
+
+	@Id
+	@GeneratedValue
+	public long getId() {
+		return this.id;
+	}
+
+	private static final long serialVersionUID = -8943418603226944904L;
+
 	private double totalAmount;
 
 	public void setTotalAmount(double value) {
@@ -37,18 +52,6 @@ public class Transaction {
 		return this.amountPaid;
 	}
 
-	private long id;
-	
-	public void setId(long value) {
-		this.id = value;
-	}
-
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return this.id;
-	}
-
 	private Employee seller;
 
 	@ManyToOne(optional = false)
@@ -60,27 +63,17 @@ public class Transaction {
 		this.seller = seller;
 	}
 
-	private CEO cEO;
+	private Customer buyer;
 
 	@ManyToOne(optional = false)
-	public CEO getCEO() {
-		return this.cEO;
+	// @JoinColumn(name = "customers_id")
+	public Customer getBuyer() {
+		return this.buyer;
 	}
 
-	public void setCEO(CEO cEO) {
-		this.cEO = cEO;
+	public void setBuyer(Customer buyer) {
+		this.buyer = buyer;
 	}
-private Customer buyer;
-
-	@ManyToOne(optional=false)
-public Customer getBuyer() {
-   return this.buyer;
-}
-
-public void setBuyer(Customer buyer) {
-   this.buyer = buyer;
-}
-
 
 	private Set<ProductTransaction> productTransactions;
 
@@ -92,14 +85,18 @@ public void setBuyer(Customer buyer) {
 	public void setProductTransactions(Set<ProductTransaction> productTransactionss) {
 		this.productTransactions = productTransactionss;
 	}
-	
+
 	private double amountUnpaid;
-	
+
 	public double getAmountUnpaid() {
 		amountUnpaid = this.totalAmount - this.amountPaid;
 		return amountUnpaid;
 	}
-	
+
+	public void setAmountUnpaid(double amountUnpaid) {
+		this.amountUnpaid = amountUnpaid;
+	}
+
 	private Date date;
 
 	@Column(nullable = false)
@@ -110,7 +107,5 @@ public void setBuyer(Customer buyer) {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
 
 }

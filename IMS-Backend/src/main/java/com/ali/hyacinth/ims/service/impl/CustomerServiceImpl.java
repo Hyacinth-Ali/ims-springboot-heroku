@@ -75,7 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
 		double debt = 0;
 		
 		if (customer != null) {
-			List<Transaction> transactions = transactionRepository.findAllByCustomer(customer);
+			List<Transaction> transactions = transactionRepository.findAllByBuyer(customer);
 			for (Transaction transaction : transactions) {
 				debt += transaction.getAmountUnpaid();
 			}
@@ -97,7 +97,7 @@ public class CustomerServiceImpl implements CustomerService {
 		 Customer customer = customerRepository.findByUserName(customerId);
 		 double returnValue = 0;
 		 if (customer != null) {
-			 List<Transaction> transactions = transactionRepository.findAllByCustomer(customer);
+			 List<Transaction> transactions = transactionRepository.findAllByBuyer(customer);
 				for (Transaction transaction : transactions) {
 					if (transaction.getDate().equals(date));
 					returnValue = transaction.getAmountUnpaid();

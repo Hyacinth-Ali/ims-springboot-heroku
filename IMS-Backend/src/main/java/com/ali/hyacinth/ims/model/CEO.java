@@ -14,6 +14,10 @@ public class CEO implements Serializable {
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1343071302787757901L;
 	private String password;
 
 	public void setPassword(String value) {
@@ -90,17 +94,6 @@ public class CEO implements Serializable {
 	@Column(nullable = false)
 	public String getCeoId() {
 		return this.ceoId;
-	}
-
-	private Set<Transaction> transactions;
-
-	@OneToMany(mappedBy = "cEO")
-	public Set<Transaction> getTransactions() {
-		return this.transactions;
-	}
-
-	public void setTransactions(Set<Transaction> transactionss) {
-		this.transactions = transactionss;
 	}
 
 }
