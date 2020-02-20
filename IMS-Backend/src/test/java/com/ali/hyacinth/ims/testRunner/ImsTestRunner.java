@@ -1,14 +1,15 @@
 package com.ali.hyacinth.ims.testRunner;
 
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import io.cucumber.java.en.*;
+import io.cucumber.junit.platform.engine.Cucumber;
 
-@RunWith(Cucumber.class)
-@CucumberOptions( 
-		features = "src/main/resources/com/ali/hyacinth/ims/features",
-		plugin = { "pretty"})
+//import cucumber.api.CucumberOptions;
+//import cucumber.api.junit.Cucumber;
+
+@Cucumber
 public class ImsTestRunner {
 	
 
