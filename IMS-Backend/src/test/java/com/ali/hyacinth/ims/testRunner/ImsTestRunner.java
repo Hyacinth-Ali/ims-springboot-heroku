@@ -8,10 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions( 
 		features = "src/main/resources/com/ali/hyacinth/ims/features",
-		glue = {"src/main/java/com/ali/hyacinth/ims/stepdefinitions"},
-		plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty", 
-				"json:target/cucumber-reports/CucumberTestReport.json",
-				"rerun:target/cucumber-reports/rerun.txt"})
+		plugin = { "pretty"})
 public class ImsTestRunner {
 	
 
