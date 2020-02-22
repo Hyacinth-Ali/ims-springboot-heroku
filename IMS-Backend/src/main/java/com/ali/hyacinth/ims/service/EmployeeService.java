@@ -13,7 +13,9 @@ public interface EmployeeService {
 	
 	void deleteEmployee(String employeeId);
 
-	EmployeeDTO getEmployeeByUserId(String userId, EmployeeDTO employeeDTO);
+	EmployeeDTO getEmployeeByUserName(String userName, String password);
+	
+	EmployeeDTO getEmployeeByEmail(String email, String password);
 	
 	List<EmployeeDTO> getEmployees();
 	

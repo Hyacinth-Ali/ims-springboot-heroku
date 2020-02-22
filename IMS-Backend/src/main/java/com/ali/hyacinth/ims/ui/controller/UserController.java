@@ -52,7 +52,7 @@ public class UserController {
 		UserRest returnValue = new UserRest();
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(loginDetails, employeeDTO);
-		EmployeeDTO returnUserDto = userService.getEmployeeByUserId(id, employeeDTO);
+		EmployeeDTO returnUserDto = userService.getEmployeeByUserName(id, "password");
 		
 		BeanUtils.copyProperties(returnUserDto, returnValue);
 		

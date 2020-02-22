@@ -69,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee employee = modelMapper.map(employeeDTO, Employee.class);
 		
 		//employee.setManager(false);
-		String publicUserId = utils.generateUserId(30);
+		String publicUserId = utils.generateEmployeeId(30);
 		employee.setEmployeeId(publicUserId);
 		employee.setEncryptedPassword("testpassword");
 		
@@ -80,24 +80,46 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	/**
 	 * Retrieve a given employee with his public id
-	 * @param employeeDTO 
+	 * @param password 
 	 * @param userName user name of the employee
 	 * 
 	 * @return the employee
 	 */
 	@Override
-	public EmployeeDTO getEmployeeByUserId(String userId, EmployeeDTO employeeDTO) {
+	public EmployeeDTO getEmployeeByUserName(String userName, String password) {
 		
 		EmployeeDTO returnValue = new EmployeeDTO();
-		Employee employee = employeeRepository.findByUserName(userId);
+		Employee employee = employeeRepository.findByUserName(userName);
 		if (employee == null) {
-			throw new RuntimeException("Wrong credentials");
+			throw new InvalidInputException("The user name is incorrect, try again!");
 		}
-		if (!employee.getUserName().equals(employeeDTO.getUserName())) {
-			throw new RuntimeException("incorrect user name");
+		
+		if (!employee.getPassword().equals(password)) {
+			throw new InvalidInputException("Incorrect password, try again!");
 		}
-		if (!employee.getPassword().equals(employeeDTO.getPassword())) {
-			throw new RuntimeException("incorrect password");
+		
+		BeanUtils.copyProperties(employee, returnValue);
+		
+		return returnValue;
+	}
+	
+	/**
+	 * Retrieve a given employee with his email
+	 * @param password 
+	 * @param userName user name of the employee
+	 * 
+	 * @return the employee
+	 */
+	@Override
+	public EmployeeDTO getEmployeeByEmail(String email, String password) {
+		
+		EmployeeDTO returnValue = new EmployeeDTO();
+		Employee employee = employeeRepository.findByEmail(email);
+		if (employee == null) {
+			throw new InvalidInputException("The email is incorrect, try again!");
+		}
+		if (!employee.getPassword().equals(password)) {
+			throw new InvalidInputException("Incorrect password, try again!");
 		}
 		
 		BeanUtils.copyProperties(employee, returnValue);
