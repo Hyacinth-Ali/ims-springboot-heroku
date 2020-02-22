@@ -1,0 +1,43 @@
+namespace com.example.ali.io.entity;
+
+external interface Entity {}
+external interface Serializable {}
+external interface Iterable {}
+
+@Entity(name = "users")
+class IMS {
+	depend javax.persistence.Entity;
+	depend java.io.Serializable;
+	depend java.lang.Iterable;
+	isA Serializable;
+	isA Iterable;
+	private static final long serialVersionUID = 1716089695145769681L;
+	1 <@>- * Manager managers;
+	1 <@>- * Employee employees;
+
+}
+
+@Entity(name = "users")
+class Manager {
+	depend javax.persistence.Entity;
+	depend java.io.Serializable;
+	isA Serializable;
+	private static final long serialVersionUID = -5615006565988870886L;
+	lazy name;
+	lazy id;
+	lazy password;
+	1 -- * Employee employees;
+
+}
+
+@Entity(name = "users")
+class Employee {
+	depend javax.persistence.Entity;
+	depend java.io.Serializable;
+	isA Serializable;
+	private static final long serialVersionUID = -1928363255579827971L;
+	lazy name;
+	lazy userName;
+	lazy password;
+
+}

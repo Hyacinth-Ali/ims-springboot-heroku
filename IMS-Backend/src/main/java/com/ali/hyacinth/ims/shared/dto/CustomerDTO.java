@@ -5,6 +5,7 @@ public class CustomerDTO {
 	private String firstName;
 	private String lastName;
 	private String userName;
+	private long id;
 
 	public String getFirstName() {
 		return firstName;
@@ -29,5 +30,15 @@ public class CustomerDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	
 
 }

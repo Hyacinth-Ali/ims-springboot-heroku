@@ -1,0 +1,30 @@
+namespace com.ali.hyacinth.ims.transferobjects;
+
+
+class Receipt {
+	lazy Date date;
+	lazy Double totalAmount;
+	lazy Double amoundPaid;	
+	0..1 -- 0..* TOProductTransaction pTransactions;
+}
+
+class TOProduct {
+	lazy String name;
+	lazy Double itemPrice;
+	lazy Integer quantity;
+}
+
+class TOProductTransaction {
+	lazy Integer quantity;
+	lazy Double price;
+	lazy Double unitPrice;
+	lazy String productName;
+}
+
+class TOTransaction {
+	lazy Date date;
+	lazy Double totalAmount;
+	lazy Double amountPaid;
+	lazy String id;
+	Double balance = {getTotalAmount() - getAmountPaid()}
+}

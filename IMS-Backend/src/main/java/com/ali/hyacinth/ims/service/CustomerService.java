@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.shared.dto.CustomerDTO;
-import com.ali.hyacinth.ims.shared.dto.EmployeeDTO;
 
 public interface CustomerService {
 	
