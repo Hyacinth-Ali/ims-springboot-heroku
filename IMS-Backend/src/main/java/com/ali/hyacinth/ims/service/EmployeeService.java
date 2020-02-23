@@ -15,6 +15,8 @@ public interface EmployeeService {
 
 	EmployeeDTO getEmployeeByUserName(String userName, String password);
 	
+	void logout(String userName);
+	
 	EmployeeDTO getEmployeeByEmail(String email, String password);
 	
 	List<EmployeeDTO> getEmployees();

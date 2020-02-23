@@ -7,7 +7,7 @@ public class EmployeeDTO implements Serializable {
 
 	private static final long serialVersionUID = 9132968119495994264L;
 
-	private String userId;
+	private String employeeId;
 	private String firstName;
 	private String lastName;
 	private String userName;
@@ -19,12 +19,12 @@ public class EmployeeDTO implements Serializable {
 	private boolean manager;
 	private List<AddressDTO> addresses;
 
-	public String getUserId() {
-		return userId;
+	public String getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getFirstName() {

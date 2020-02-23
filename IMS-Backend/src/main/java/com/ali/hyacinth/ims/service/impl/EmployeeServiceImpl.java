@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ali.hyacinth.ims.ImsBackendApplication;
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.model.Employee;
 import com.ali.hyacinth.ims.repository.EmployeeRepository;
@@ -41,13 +42,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		String error = "";
 		
 		if (employeeRepository.findByEmail(employeeDTO.getEmail()) != null) {
-			error = "Email already exist";
+			error = "The email already exist.";
+		} else if (employeeRepository.findByUserName(employeeDTO.getUserName()) != null) {
+			error = "The user name already exist.";
 		} else if (employeeDTO.getFirstName() == null || employeeDTO.getFirstName().length() == 0) {
 			error = "The first name cannot be empty.";
 		} else if (employeeDTO.getLastName() == null || employeeDTO.getLastName().length() == 0) {
-			error = "The first name cannot be empty.";
+			error = "The last name cannot be empty.";
 		} else if (employeeDTO.getPassword() == null || employeeDTO.getPassword() == "") {
-			error = "The password cannot be empty password.";
+			error = "The password cannot be empty.";
 		} else if (employeeDTO.getUserName() == null || employeeDTO.getUserName().length() == 0) {
 			error = "The user name cannot be empty.";
 		} else if (employeeDTO.getEmail() == null || employeeDTO.getEmail().length() == 0) {
@@ -100,9 +103,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		BeanUtils.copyProperties(employee, returnValue);
 		
+		ImsBackendApplication.addCurrentEmployee(employee);
+		
 		return returnValue;
 	}
 	
+	/**
+	 * Removes current employee
+	 */
+	public void logout(String userName) {
+		
+		ImsBackendApplication.removeCurrentEmployee(userName);
+	}
 	/**
 	 * Retrieve a given employee with his email
 	 * @param password 
@@ -121,6 +133,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		if (!employee.getPassword().equals(password)) {
 			throw new InvalidInputException("Incorrect password, try again!");
 		}
+		
+		ImsBackendApplication.addCurrentEmployee(employee);
 		
 		BeanUtils.copyProperties(employee, returnValue);
 		

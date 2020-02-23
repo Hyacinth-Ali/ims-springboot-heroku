@@ -1,11 +1,13 @@
 package com.ali.hyacinth.ims;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.model.Customer;
 import com.ali.hyacinth.ims.model.Employee;
 import com.ali.hyacinth.ims.model.Transaction;
@@ -18,7 +20,14 @@ public class ImsBackendApplication {
 	private static List<Transaction> currentTransactions; 
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(ImsBackendApplication.class, args);
+	}
+	
+	private static void init() {
+		currentEmployees = new ArrayList<Employee>();
+		currentCustomers = new ArrayList<Customer>();
+		currentTransactions = new ArrayList<Transaction>();
 	}
 	
 	public static java.util.Date getCurrentDate() {
@@ -35,16 +44,25 @@ public class ImsBackendApplication {
 		return currentEmployees;
 	}
 
-	public void addCurrentEmployees(Employee currenteEmployee) {
-		currentEmployees.add(currenteEmployee);
+	public static void addCurrentEmployee(Employee currenteEmployee) {
+		if (currentEmployees == null) {
+			init();
+			currentEmployees.add(currenteEmployee);
+		} else {
+			currentEmployees.add(currenteEmployee);
+		}
+		
 	}
 	
-	public void removeCurrentEmployee(String employeeId) {
+	public static void removeCurrentEmployee(String userName) {
 		Employee employee = null;
 		for (Employee currentEmployee : getCurrentEmployees()) {
-			if (currentEmployee.getEmployeeId().equals(employeeId)) {
+			if (currentEmployee.getUserName().equals(userName)) {
 				employee = currentEmployee;
 			}
+		}
+		if (employee == null) {
+			throw new InvalidInputException("The employee is not currently logged in");
 		}
 		getCurrentEmployees().remove(employee);
 	}
@@ -53,11 +71,16 @@ public class ImsBackendApplication {
 		return currentCustomers;
 	}
 	
-	public void addCurrentCustomer(Customer currenteCustomer) {
-		currentCustomers.add(currenteCustomer);
+	public static void addCurrentCustomer(Customer currenteCustomer) {
+		if (currentCustomers == null) {
+			init();
+			currentCustomers.add(currenteCustomer);
+		} else {
+			currentCustomers.add(currenteCustomer);
+		}
 	}
 	
-	public void removeCurrentCustomer(String customerUserName) {
+	public static void removeCurrentCustomer(String customerUserName) {
 		Customer customer = null;
 		for (Customer currentCustomer : getCurrentCustomers()) {
 			if (currentCustomer.getUserName().equals(customerUserName)) {
@@ -73,8 +96,14 @@ public class ImsBackendApplication {
 	}
 
 	
-	public void addCurrentTransaction(Transaction currentTransaction) {
-		currentTransactions.add(currentTransaction);
+	public static void addCurrentTransaction(Transaction currentTransaction) {currentTransactions.add(currentTransaction);
+		if (currentTransactions == null) {
+			init();
+			currentTransactions.add(currentTransaction);
+		} else {
+			currentTransactions.add(currentTransaction);
+		}
+		
 	}
 	
 	public void removeCurrentTransaction(long transactionID) {
@@ -86,9 +115,17 @@ public class ImsBackendApplication {
 		}
 		getCurrentCustomers().remove(transaction);
 	}
-	
-	
-	
 
+	public static void setCurrentEmployees(List<Employee> currentEmployees) {
+		ImsBackendApplication.currentEmployees = currentEmployees;
+	}
+
+	public static void setCurrentCustomers(List<Customer> currentCustomers) {
+		ImsBackendApplication.currentCustomers = currentCustomers;
+	}
+
+	public static void setCurrentTransactions(List<Transaction> currentTransactions) {
+		ImsBackendApplication.currentTransactions = currentTransactions;
+	}
 
 }
