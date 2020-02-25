@@ -83,9 +83,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	/**
 	 * Retrieve a given employee with his public id
-	 * @param password 
 	 * @param userName user name of the employee
-	 * 
+	 * @param password 
 	 * @return the employee
 	 */
 	@Override

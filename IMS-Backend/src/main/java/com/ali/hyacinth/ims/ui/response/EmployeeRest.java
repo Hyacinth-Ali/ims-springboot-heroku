@@ -2,13 +2,13 @@ package com.ali.hyacinth.ims.ui.response;
 
 import java.util.List;
 
-public class UserRest {
+public class EmployeeRest {
 
 	private String firstName;
 	private String lastName;
 	private String userName;
 	private String email;
-	private String userId;
+	private String employeeId;
 	private List<AddressRest> addresses;
 
 	public String getFirstName() {
@@ -35,12 +35,13 @@ public class UserRest {
 		this.email = email;
 	}
 
-	public String getUserId() {
-		return userId;
+
+	public String getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getUserName() {

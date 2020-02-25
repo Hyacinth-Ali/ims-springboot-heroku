@@ -2,7 +2,7 @@ package com.ali.hyacinth.ims.ui.request;
 
 import java.util.List;
 
-public class UserDetailsRequest {
+public class EmployeeDetailsRequest {
 	
 	private String firstName;
 	private String lastName;

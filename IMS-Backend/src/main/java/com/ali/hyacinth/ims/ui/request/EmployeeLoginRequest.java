@@ -1,6 +1,6 @@
 package com.ali.hyacinth.ims.ui.request;
 
-public class UserLoginRequest {
+public class EmployeeLoginRequest {
 	
 	private String userName;
 	private String password;

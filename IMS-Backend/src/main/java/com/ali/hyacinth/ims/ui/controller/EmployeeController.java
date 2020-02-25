@@ -24,18 +24,18 @@ import com.ali.hyacinth.ims.service.AddressService;
 import com.ali.hyacinth.ims.service.EmployeeService;
 import com.ali.hyacinth.ims.shared.dto.AddressDTO;
 import com.ali.hyacinth.ims.shared.dto.EmployeeDTO;
-import com.ali.hyacinth.ims.ui.request.UserDetailsRequest;
-import com.ali.hyacinth.ims.ui.request.UserLoginRequest;
+import com.ali.hyacinth.ims.ui.request.EmployeeDetailsRequest;
+import com.ali.hyacinth.ims.ui.request.EmployeeLoginRequest;
 import com.ali.hyacinth.ims.ui.response.AddressRest;
 import com.ali.hyacinth.ims.ui.response.ErrorMessages;
 import com.ali.hyacinth.ims.ui.response.OperationStatusModel;
 import com.ali.hyacinth.ims.ui.response.RequestOperationName;
 import com.ali.hyacinth.ims.ui.response.RequestOperationStatus;
-import com.ali.hyacinth.ims.ui.response.UserRest;
+import com.ali.hyacinth.ims.ui.response.EmployeeRest;
 
 @RestController
-@RequestMapping("users") // http://localhost:8080/users
-public class UserController {
+@RequestMapping("employees") // http://localhost:8080/users
+public class EmployeeController {
 	
 	@Autowired
 	EmployeeService userService;
@@ -45,14 +45,14 @@ public class UserController {
 	 
 	@GetMapping(path="/{id}",
 			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, 
-			produces = {  MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
+			produces = { MediaType.APPLICATION_JSON_VALUE }
 			)
-	public UserRest getUser(@PathVariable String id, @RequestBody UserLoginRequest loginDetails) {
+	public EmployeeRest getEmployee(@PathVariable String id, @RequestBody EmployeeLoginRequest loginDetails) {
 		
-		UserRest returnValue = new UserRest();
+		EmployeeRest returnValue = new EmployeeRest();
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(loginDetails, employeeDTO);
-		EmployeeDTO returnUserDto = userService.getEmployeeByUserName(id, "password");
+		EmployeeDTO returnUserDto = userService.getEmployeeByUserName(loginDetails.getUserName(), loginDetails.getPassword());
 		
 		BeanUtils.copyProperties(returnUserDto, returnValue);
 		
@@ -91,49 +91,34 @@ public class UserController {
 		
 		return returnValue;
 	}
-	
-	@PostMapping("/createuser")
-	public String createUser() {
-		return "A user is created inside Create User.";
-	}
+
 	
 	/**
 	 * RequestBody: to enable this method read json or xml data from a 
 	 * web request
-	 * @param userDetails is a class to convert the json 
+	 * @param employeeDetails is a class to convert the json 
 	 * to java object
 	 * @return
 	 * @throws InvalidInputException 
 	 */
 	@PostMapping(
-			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, 
-			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
+			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
 			)
-	public UserRest createUser(@RequestBody UserDetailsRequest userDetails) throws Exception {
-		
-		if (userDetails.getFirstName().isEmpty()) {
-			//Parameter value can be plain string values
-			throw new InvalidInputException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
-		}
-		UserRest returnValue = new UserRest();
+	public void createEmployee(@RequestBody EmployeeDetailsRequest employeeDetails) throws Exception {
 		
 		ModelMapper modelMapper = new ModelMapper();
-		EmployeeDTO employeeDTO = modelMapper.map(userDetails, EmployeeDTO.class);
+		EmployeeDTO employeeDTO = modelMapper.map(employeeDetails, EmployeeDTO.class);
 		
-		//EmployeeDTO createEmployee = userService.createEmployee(employeeDTO);
-
-		//returnValue = modelMapper.map(createEmployee, UserRest.class);
-		
-		return returnValue;
+		userService.createEmployee(employeeDTO);
 	}
 	
 	@PutMapping(path="/{id}",
 			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, 
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
 			)
-	public UserRest updateUser(@PathVariable String id, @RequestBody UserDetailsRequest userDetails) {
+	public EmployeeRest updateUser(@PathVariable String id, @RequestBody EmployeeDetailsRequest userDetails) {
 	
-		UserRest returnValue = new UserRest();
+		EmployeeRest returnValue = new EmployeeRest();
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(userDetails, employeeDTO);
 		
@@ -158,19 +143,20 @@ public class UserController {
 	}
 	
 	@GetMapping(produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-	public List<UserRest> getUsers(@RequestParam(value="page", defaultValue="0") int page,
+	public List<EmployeeRest> getUsers(@RequestParam(value="page", defaultValue="0") int page,
 			@RequestParam(value="limit", defaultValue="1") int limit) {
 		
-		List<UserRest> returnValue = new ArrayList<>();
+		List<EmployeeRest> returnValue = new ArrayList<>();
 		
 		List<EmployeeDTO> users = userService.getEmployees(page, limit);
 		
 		for (EmployeeDTO employeeDTO : users) {
-			UserRest userModel = new UserRest();
+			EmployeeRest userModel = new EmployeeRest();
 			BeanUtils.copyProperties(employeeDTO, userModel);
 			returnValue.add(userModel);
 		}
 		return returnValue;
 	}
+
 
 }
