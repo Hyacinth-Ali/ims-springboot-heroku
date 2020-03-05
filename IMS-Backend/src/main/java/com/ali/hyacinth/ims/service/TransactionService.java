@@ -14,23 +14,21 @@ public interface TransactionService {
 	
 	void createTransaction(String customerUserName, String employeeUserName) throws InvalidInputException;
 	
-	void addTransactionProduct(String productName, int quantity, long id) throws InvalidInputException;
+	void addTransactionProduct(String productName, int quantity, String transactionId) throws InvalidInputException;
 	
-	void setTransactionTotalAmount() throws InvalidInputException;
-	
-	Date cleanDate(Date date);
+	void setTransactionTotalAmount(String transactionId) throws InvalidInputException;
 	
 	//Final step to purchase products, generate receipt.
-	Receipt purchase(String customerID, float amountPaid) throws InvalidInputException;
+	Receipt checkout(String transactionId, float amountPaid) throws InvalidInputException;
 	
-	Receipt generateReceipt(String customerID) throws InvalidInputException;
+	//Receipt generateReceipt(String customerID) throws InvalidInputException;
 	
 	//List of products for a given transaction 
-	List<ProductTransactionDTO> getTOProductTransaction(String transactionId);
+	//List<ProductTransactionDTO> getTOProductTransaction(String transactionId);
 	
 	void deleteTransaction(String id) throws InvalidInputException;
 	
-	void clearTransactionProducts() throws InvalidInputException;
+	void clearTransactionProducts(String transactionId) throws InvalidInputException;
 	
 	void updateQuantityTransaction(String productName, int quantity) throws InvalidInputException;
 	

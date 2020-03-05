@@ -2,7 +2,9 @@ package com.ali.hyacinth.ims.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +49,17 @@ public class TransactionServiceImpl implements TransactionService {
 	 * Retrieves all transactions linked to a customer
 	 */
 	@Override
-	public List<TransactionDTO> getCustomerTransactions(String userName) {
+	public List<TransactionDTO> getCustomerTransactions(String userName) throws InvalidInputException{
+		
+		if (userName == null || userName.length() == 0) {
+			throw new InvalidInputException("Please select the customer.");
+		} 
 		
 		Customer customer = customerRepository.findByUserName(userName);
+		
+		if (customer == null) {
+			throw new InvalidInputException("This customer does not exist.");
+		}
 		
 		List<Transaction> transactions = transactionRepository.findAllByBuyer(customer);
 				
@@ -74,13 +84,20 @@ public class TransactionServiceImpl implements TransactionService {
 	public void createTransaction(String customerUserName, String employeeUserName) throws InvalidInputException {
 		String error = "";
 		//get the current date
-		Date date = ImsBackendApplication.getCurrentDate();
+		String date = ImsBackendApplication.getCurrentDate();
 		
-		if (customerUserName == null || customerUserName.length() == 0) {
-			error = "Please, enter the customer user name.";
-		} else if (employeeUserName == null || employeeUserName.length() == 0) {
-			error = "Select employee first.";
+		String name = null;
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.getUserName().equals(employeeUserName)) {
+				name = employeeUserName;
+			}
 		}
+		
+		if (name == null || name.length() == 0) {
+			error = "Employee must be logged in.";
+		} else if (customerUserName == null || customerUserName.length() == 0) {
+			error = "Please, enter the customer user name.";
+		} 
 		
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
@@ -105,19 +122,22 @@ public class TransactionServiceImpl implements TransactionService {
 		transaction.setSeller(e);
 		
 		transactionRepository.save(transaction);
+		
+		ImsBackendApplication.addCurrentTransaction(transaction);
 
 	}
 
 	@Override
-	public void addTransactionProduct(String productName, int quantity, long id) throws InvalidInputException {
+	public void addTransactionProduct(String productName, int quantity, String transactionId) throws InvalidInputException {
 		
 		String error = "";
 		Product product = productRepository.findByName(productName);
+		
 		Transaction currentTransaction = null;
 		
-		boolean productExist = false;
+		
 		for (Transaction t : ImsBackendApplication.getCurrentTransactions()) {
-			if (t.getId() == id) {
+			if (t.getTransactionId().equals(transactionId)) {
 				currentTransaction = t;
 			}
 		}
@@ -125,8 +145,9 @@ public class TransactionServiceImpl implements TransactionService {
 			throw new InvalidInputException("The customer user name must be enetered before adding products.");
 		}
 		
-		for (ProductTransaction pTransactions : productTransactionRepository.findAllByTransaction(currentTransaction)) {
-			if (productRepository.findByProductTransaction(pTransactions).equals(product)) {
+		boolean productExist = false;
+		for (ProductTransaction pTransaction : productTransactionRepository.findAllByTransaction(currentTransaction)) {
+			if (productRepository.findByProductTransaction(pTransaction).equals(product)) {
 				productExist = true;
 				break;
 			}
@@ -156,51 +177,120 @@ public class TransactionServiceImpl implements TransactionService {
 		product.setQuantity(product.getQuantity() - quantity);
 		product.setProductTransaction(productTransaction);
 		
-		currentTransaction.getProductTransactions().add(productTransaction);
+		//currentTransaction.getProductTransactions().add(productTransaction);
+		//List<ProductTransaction> productTransactions = productTransactionRepository.findAllByTransaction(currentTransaction);
 		
-		setTransactionTotalAmount();
+		Set<ProductTransaction> productTransactions = new HashSet<ProductTransaction>();
+		productTransactions.add(productTransaction);
+		currentTransaction.setProductTransactions(productTransactions);
+		setTransactionTotalAmount(currentTransaction.getTransactionId());
+		
+		transactionRepository.save(currentTransaction);
 
 	}
 
 	@Override
-	public void setTransactionTotalAmount() throws InvalidInputException {
-		// TODO Auto-generated method stub
+	public void setTransactionTotalAmount(String transactionId) throws InvalidInputException {
+		
+		Transaction currentTransaction = transactionRepository.findByTransactionId(transactionId);
+		
+		float totalAmount = 0.0f;
+		if (currentTransaction != null) {
+			for (ProductTransaction productTransaction : productTransactionRepository.findAllByTransaction(currentTransaction)) {
+				double amount = productTransaction.getPrice();
+				totalAmount += amount;
+			}
+		} else {
+			throw new InvalidInputException("There transaction does not exist.");
+		}
+		
+		currentTransaction.setTotalAmount(totalAmount);
+		
+		//transactionRepository.save(currentTransaction);
 
 	}
 
+	/**
+	 * Final step to purchase products, generate receipt.
+	 * @param transaction of the purchase
+	 * @param amountPaid paid for the transaction
+	 * @throws InvalidInputException
+	 */
 	@Override
-	public Date cleanDate(Date date) {
-		// TODO Auto-generated method stub
-		return null;
+	public Receipt checkout(String transactionId, float amountPaid) throws InvalidInputException {
+		String error = "";
+		Transaction transaction = transactionRepository.findByTransactionId(transactionId);
+		if (transaction == null) {
+			error = "This transaction does not exist!";
+		} else if (amountPaid < 0) {
+			error = "The amount to pay cannot be negative.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
+		Receipt receipt = null;
+		
+		transaction.setAmountPaid(amountPaid);
+		receipt = new Receipt();
+		receipt.setTotalAmount(transaction.getTotalAmount());
+		receipt.setAmoundPaid(transaction.getAmountPaid());
+		String date = transaction.getDate();
+		receipt.setDate(date);
+		try {
+			for (ProductTransaction pTransaction : productTransactionRepository.findAllByTransaction(transaction)) {
+				
+				ProductTransactionDTO pTransactionDTO = new ProductTransactionDTO();
+				
+				ModelMapper modelMapper = new ModelMapper();
+				pTransactionDTO = modelMapper.map(pTransaction, ProductTransactionDTO.class);
+				receipt.getpTransactions().add(pTransactionDTO);
+			}
+		} catch (RuntimeException e) {
+			throw new InvalidInputException(e.getMessage());
+		}
+		
+		return receipt;
 	}
 
-	@Override
-	public Receipt purchase(String customerID, float amountPaid) throws InvalidInputException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Receipt generateReceipt(String customerID) throws InvalidInputException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ProductTransactionDTO> getTOProductTransaction(String transactionId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 * Deletes a transaction
+	 * @param id of the transaction
+	 * @throws InvalidInputException
+	 */
 	@Override
 	public void deleteTransaction(String id) throws InvalidInputException {
-		// TODO Auto-generated method stub
+		
+		Transaction transaction = transactionRepository.findByTransactionId(id);
+		
+		if (transaction == null) {
+			throw new InvalidInputException("The transaction doesn't exist");
+		}
+		
+		transactionRepository.delete(transaction);
 
 	}
 
 	@Override
-	public void clearTransactionProducts() throws InvalidInputException {
-		// TODO Auto-generated method stub
+	public void clearTransactionProducts(String transactionId) throws InvalidInputException {
+		
+		Transaction transaction = transactionRepository.findByTransactionId(transactionId);
+		if (transaction == null) {
+			throw new InvalidInputException("The transaction does not exist");
+		}
+		
+		try {
+			for (ProductTransaction productTransaction : productTransactionRepository.findAllByTransaction(transaction)) {
+				Product p = productRepository.findByProductTransaction(productTransaction);
+				p.setQuantity(p.getQuantity() + productTransaction.getQuantity());
+				productRepository.save(p);
+			}
+			List<ProductTransaction> clearTransactions = productTransactionRepository.findAllByTransaction(transaction);
+			productTransactionRepository.deleteAll(clearTransactions);
+			setTransactionTotalAmount(transactionId);
+		} catch (RuntimeException e) {
+			throw new InvalidInputException(e.getMessage());
+		}
 
 	}
 

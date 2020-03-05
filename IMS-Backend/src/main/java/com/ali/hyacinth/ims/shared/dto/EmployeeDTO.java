@@ -1,7 +1,6 @@
 package com.ali.hyacinth.ims.shared.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class EmployeeDTO implements Serializable {
 
@@ -17,7 +16,6 @@ public class EmployeeDTO implements Serializable {
 	private String emailVerificationToken;
 	private boolean emailVerificationStatus = false;
 	private boolean manager;
-	private List<AddressDTO> addresses;
 
 	public String getEmployeeId() {
 		return employeeId;
@@ -103,15 +101,4 @@ public class EmployeeDTO implements Serializable {
 	public void setEmailVerificationStatus(boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
-
-	public List<AddressDTO> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<AddressDTO> addresses) {
-		this.addresses = addresses;
-	}
-	
-	
-
 }

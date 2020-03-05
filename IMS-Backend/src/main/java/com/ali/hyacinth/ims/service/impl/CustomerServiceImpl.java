@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 	TransactionRepository transactionRepository;
 
 	/**
-	 * Create an object of an employee.
+	 * Create an object of a customer.
 	 * 
 	 * @throws InvalidInputException
 	 */

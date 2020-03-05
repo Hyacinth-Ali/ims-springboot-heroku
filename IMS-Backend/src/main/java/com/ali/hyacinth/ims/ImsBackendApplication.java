@@ -1,7 +1,10 @@
 package com.ali.hyacinth.ims;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
@@ -30,14 +33,11 @@ public class ImsBackendApplication {
 		currentTransactions = new ArrayList<Transaction>();
 	}
 	
-	public static java.util.Date getCurrentDate() {
-	    java.util.Calendar cal = java.util.Calendar.getInstance();
-	    cal.set(Calendar.HOUR_OF_DAY, 0);
-	    cal.set(Calendar.MINUTE, 0);
-	    cal.set(Calendar.SECOND, 0);
-	    cal.set(Calendar.MILLISECOND, 0);
-	    java.util.Date date = cal.getTime();
-	    return date;
+	public static String getCurrentDate() {
+	    
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		return dateFormat.format(date);
 	  }
 
 	public static List<Employee> getCurrentEmployees() {

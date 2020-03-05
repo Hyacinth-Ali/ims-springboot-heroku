@@ -10,9 +10,19 @@ import javax.persistence.OneToOne;
 
 @Entity(name = "products")
 public class Product implements Serializable {
-	
+	private String productId;
+
+	public void setProductId(String value) {
+		this.productId = value;
+	}
+
+	@Column(nullable = false, unique = true)
+	public String getProductId() {
+		return this.productId;
+	}
+
 	private static final long serialVersionUID = 7091303478542316555L;
-	
+
 	private double itemPrice;
 
 	public void setItemPrice(double value) {

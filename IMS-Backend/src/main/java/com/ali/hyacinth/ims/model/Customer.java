@@ -12,6 +12,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
+private String customerId;
+   
+   public void setCustomerId(String value) {
+this.customerId = value;
+    }
+public String getCustomerId() {
+return this.customerId;
+    }
 	
 	private static final long serialVersionUID = 1642219633693293123L;
 	

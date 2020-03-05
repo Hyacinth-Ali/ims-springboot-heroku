@@ -11,8 +11,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "productTransactions")
-public class ProductTransaction implements Serializable  {
-	
+public class ProductTransaction implements Serializable {
+	private String pTransactionId;
+
+	public void setPTransactionId(String value) {
+		this.pTransactionId = value;
+	}
+
+	@Column(nullable = false, unique = true)
+	public String getPTransactionId() {
+		return this.pTransactionId;
+	}
+
 	private static final long serialVersionUID = -7449099535184796784L;
 	private double price;
 
@@ -59,7 +69,6 @@ public class ProductTransaction implements Serializable  {
 		this.transaction = transaction;
 	}
 
-	
 	private long id;
 
 	public void setId(long value) {

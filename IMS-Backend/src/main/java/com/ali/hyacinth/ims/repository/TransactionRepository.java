@@ -15,5 +15,6 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
 	List<Transaction> findAllByBuyer(Customer buyer);
 	//List<Transaction> findAllByCustomer(Customer customer);
 	Transaction findByDate(Date date);
+	Transaction findByTransactionId(String transactionId);
 
 }

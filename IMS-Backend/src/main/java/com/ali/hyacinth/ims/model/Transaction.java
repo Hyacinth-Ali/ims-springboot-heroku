@@ -16,6 +16,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "transactions")
 public class Transaction implements Serializable {
+	private String transactionId;
+
+	public void setTransactionId(String value) {
+		this.transactionId = value;
+	}
+
+	@Column(nullable = false, unique = true)
+	public String getTransactionId() {
+		return this.transactionId;
+	}
+
 	private long id;
 
 	public void setId(long value) {
@@ -36,7 +47,7 @@ public class Transaction implements Serializable {
 		this.totalAmount = value;
 	}
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	public double getTotalAmount() {
 		return this.totalAmount;
 	}
@@ -82,8 +93,8 @@ public class Transaction implements Serializable {
 		return this.productTransactions;
 	}
 
-	public void setProductTransactions(Set<ProductTransaction> productTransactionss) {
-		this.productTransactions = productTransactionss;
+	public void setProductTransactions(Set<ProductTransaction> productTransactions) {
+		this.productTransactions = productTransactions;
 	}
 
 	private double amountUnpaid;
@@ -97,14 +108,14 @@ public class Transaction implements Serializable {
 		this.amountUnpaid = amountUnpaid;
 	}
 
-	private Date date;
+	private String date;
 
 	@Column(nullable = false)
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

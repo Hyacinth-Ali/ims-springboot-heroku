@@ -9,7 +9,6 @@ public class EmployeeRest {
 	private String userName;
 	private String email;
 	private String employeeId;
-	private List<AddressRest> addresses;
 
 	public String getFirstName() {
 		return firstName;
@@ -51,17 +50,5 @@ public class EmployeeRest {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-	public List<AddressRest> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<AddressRest> addresses) {
-		this.addresses = addresses;
-	}
-	
-	
-	
-	
 
 }

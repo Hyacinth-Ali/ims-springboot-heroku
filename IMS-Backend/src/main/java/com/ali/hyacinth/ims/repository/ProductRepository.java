@@ -10,6 +10,6 @@ import com.ali.hyacinth.ims.model.ProductTransaction;
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 	
 	Product findByName(String name);
-	ProductTransaction findByProductTransaction(ProductTransaction pTransaction);
+	Product findByProductTransaction(ProductTransaction pTransaction);
 
 }
