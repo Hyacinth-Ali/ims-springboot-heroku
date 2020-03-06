@@ -13,14 +13,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ali.hyacinth.ims.ImsBackendApplication;
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.model.Customer;
+import com.ali.hyacinth.ims.model.Employee;
 import com.ali.hyacinth.ims.model.Transaction;
 import com.ali.hyacinth.ims.repository.CustomerRepository;
+import com.ali.hyacinth.ims.repository.EmployeeRepository;
 import com.ali.hyacinth.ims.repository.TransactionRepository;
 import com.ali.hyacinth.ims.service.CustomerService;
 import com.ali.hyacinth.ims.shared.dto.CustomerDTO;
-import com.ali.hyacinth.ims.shared.dto.EmployeeDTO;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -30,6 +32,9 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	TransactionRepository transactionRepository;
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	/**
 	 * Create an object of a customer.
@@ -37,9 +42,22 @@ public class CustomerServiceImpl implements CustomerService {
 	 * @throws InvalidInputException
 	 */
 	@Override
-	public void createCustomer(CustomerDTO customerDto) throws InvalidInputException {
+	public void createCustomer(CustomerDTO customerDto, String employeeId) throws InvalidInputException {
+		
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		boolean loggedIn = false;
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.equals(employee)) {
+				loggedIn = true;
+			}
+		}
 		
 		String error = "";
+		if (!loggedIn) {
+			error = "An employee must log in before creating a customer.";
+		} else if (!employee.isManager()) {
+			error = "A manager is required to create a customer.";
+		} 
 		
 		if (customerDto.getUserName() == null || customerDto.getUserName().length() == 0) {
 			error = "The user name of a customer cannot be empty";
@@ -67,7 +85,26 @@ public class CustomerServiceImpl implements CustomerService {
 	 * @throws InvalidInputException
 	 */
 	@Override
-	public double getCustomerDebt(String userName) throws InvalidInputException {
+	public double getCustomerDebt(String userName, String employeeId) throws InvalidInputException {
+		
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		boolean loggedIn = false;
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.equals(employee)) {
+				loggedIn = true;
+			}
+		}
+		
+		String error = "";
+		if (!loggedIn) {
+			error = "An employee must log in before accessing customer profile.";
+		} else if (!employee.isManager()) {
+			error = "A manager is required to view debt of a customer.";
+		} 
+		
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
 		
 		//Ger t the customer from the database
 		Customer customer = customerRepository.findByUserName(userName);
@@ -87,7 +124,8 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	/**
-	 * Retrieves specific debt of a customer for a transaction
+	 * Retrieves specific debt of a customer for a transaction, not used for now
+	 * TODO to be fully implemented and used
 	 * @param customerId of the customer
 	 * @return the amount of the debt
 	 * @throws InvalidInputException
@@ -108,8 +146,27 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 	@Override
-	public void updateCustomer(String newUserName, CustomerDTO customerDTO) throws InvalidInputException {
+	public void updateCustomer(String newUserName, CustomerDTO customerDTO, String employeeId) throws InvalidInputException {
 		String error = "";
+		
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		boolean loggedIn = false;
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.equals(employee)) {
+				loggedIn = true;
+			}
+		}
+		
+		if (!loggedIn) {
+			error = "An employee must log in before updating customer deatils.";
+		} else if (!employee.isManager()) {
+			error = "A manager is required to update customer details.";
+		} 
+		
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		
 		Customer customer = customerRepository.findByUserName(customerDTO.getUserName());
 		if (customer == null) {
@@ -147,7 +204,27 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Transactional
 	@Override
-	public void deleteCustomer(String userName) {
+	public void deleteCustomer(String userName, String employeeId) {
+		
+		String error = "";
+		
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		boolean loggedIn = false;
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.equals(employee)) {
+				loggedIn = true;
+			}
+		}
+		
+		if (!loggedIn) {
+			error = "An employee must log in before deleting customer.";
+		} else if (!employee.isManager()) {
+			error = "A manager is required to delete a customer.";
+		} 
+		
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
 		Customer customer = customerRepository.findByUserName(userName);
 		
 		if (customer == null) {
@@ -158,6 +235,9 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	}
 
+	/**
+	 * TODO: To fully implemented and then used
+	 */
 	@Override
 	public List<CustomerDTO> getCustomers(int page, int limit) {
 		
@@ -187,6 +267,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	/**
 	 * Retrieves the list of customers from the database.
+	 * /
+	 * TODO: To fully implemented and then used
+	 *
 	 */
 	@Override
 	public List<CustomerDTO> getCustomers() {

@@ -90,6 +90,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeDTO getEmployeeByUserName(String userName, String password) {
 		
+		String error = "";
+		if (userName == null || userName.length() == 0) {
+			error = "Please enter your user name or email address.";
+		} else if (password == null || password.length() == 0) {
+			error = "Please enter your password.";
+		}
+		
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		EmployeeDTO returnValue = new EmployeeDTO();
 		Employee employee = employeeRepository.findByUserName(userName);
 		if (employee == null) {
@@ -144,7 +155,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void deleteEmployee(String employeeId) {
 		
-		Employee employee = employeeRepository.findByUserName(employeeId);
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
 		
 		if (employee == null) {
 			throw new InvalidInputException("The employee doesn't exist");
@@ -161,14 +172,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void updateEmployee(String id, EmployeeDTO employeeDTO) throws InvalidInputException {
 		String error = "";
 		
-		if (employeeRepository.findByEmail(employeeDTO.getEmail()) != null) {
-			error = "Email already exist";
-		} else if (employeeDTO.getFirstName() == null || employeeDTO.getFirstName().length() == 0) {
+		if (employeeDTO.getFirstName() == null || employeeDTO.getFirstName().length() == 0) {
 			error = "The first name cannot be empty.";
 		} else if (employeeDTO.getLastName() == null || employeeDTO.getLastName().length() == 0) {
-			error = "The first name cannot be empty.";
+			error = "The last name cannot be empty.";
 		} else if (employeeDTO.getPassword() == null || employeeDTO.getPassword() == "") {
-			error = "The password cannot be empty password.";
+			error = "The password cannot be empty.";
 		} else if (employeeDTO.getUserName() == null || employeeDTO.getUserName().length() == 0) {
 			error = "The user name cannot be empty.";
 		} else if (employeeDTO.getEmail() == null || employeeDTO.getEmail().length() == 0) {
@@ -181,13 +190,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee employee = employeeRepository.findByUserName(employeeDTO.getUserName());
 		
 		if (employee == null) {
-			throw new InvalidInputException("The employee doesn't exist");
+			throw new InvalidInputException("The user name is incorrect.");
 		}
+		
+		if (!employee.getPassword().equals(employeeDTO.getPassword())) {
+			error = "The password is incorrect";
+		} 
+		
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		
 		employee.setFirstName(employeeDTO.getFirstName());
 		employee.setLastName(employeeDTO.getLastName());
 		employee.setPassword(employeeDTO.getPassword());
-		employee.setUserName(employeeDTO.getUserName());
+		employee.setEmail(employeeDTO.getEmail());
+		//cannot update user name for now
+		//employee.setUserName(employeeDTO.getUserName());
 		
 		employeeRepository.save(employee);
 		

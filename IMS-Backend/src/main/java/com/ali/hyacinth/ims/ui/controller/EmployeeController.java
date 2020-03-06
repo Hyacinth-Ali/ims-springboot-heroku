@@ -34,63 +34,31 @@ import com.ali.hyacinth.ims.ui.response.RequestOperationStatus;
 import com.ali.hyacinth.ims.ui.response.EmployeeRest;
 
 @RestController
-@RequestMapping("employees") // http://localhost:8080/users
+@RequestMapping("employees") // http://localhost:8080/employees
 public class EmployeeController {
 	
 	@Autowired
-	EmployeeService userService;
+	EmployeeService employeeService;
 	
 	@Autowired
 	AddressService addressService;
-	 
-	@GetMapping(path="/{id}",
+	 // http://localhost:8080/employees
+	@GetMapping(
 			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, 
 			produces = { MediaType.APPLICATION_JSON_VALUE }
 			)
-	public EmployeeRest getEmployee(@PathVariable String id, @RequestBody EmployeeLoginRequest loginDetails) {
+	public EmployeeRest getEmployee(@RequestBody EmployeeLoginRequest loginDetails) {
 		
 		EmployeeRest returnValue = new EmployeeRest();
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(loginDetails, employeeDTO);
-		EmployeeDTO returnUserDto = userService.getEmployeeByUserName(loginDetails.getUserName(), loginDetails.getPassword());
+		EmployeeDTO returnUserDto = employeeService.getEmployeeByUserName(loginDetails.getUserName(), loginDetails.getPassword());
 		
 		BeanUtils.copyProperties(returnUserDto, returnValue);
 		
 		return returnValue;
 	}
 	
-	@GetMapping(path="/{id}/addresses",
-			produces = {  MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
-			)
-	public List<AddressRest> getUserAddresses(@PathVariable String id) {
-		
-		List<AddressRest> returnValue = new ArrayList<>();
-		
-		List<AddressDTO> addressDTO = addressService.getAddresses(id);
-		
-		if (addressDTO != null && !addressDTO.isEmpty()) {
-			Type listType = new TypeToken<List<AddressRest>>() {}.getType();
-			returnValue = new ModelMapper().map(addressDTO, listType);
-		}
-		
-		return returnValue;
-	}
-	
-	@GetMapping(path="/{id}/addresses/{addressId}",
-			produces = {  MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
-			)
-	public AddressRest getUserAddress(@PathVariable String addressId) {
-		
-		//List<AddressRest> returnValue = new ArrayList<>();
-		
-		AddressDTO addressDTO = addressService.getAddress(addressId);
-		
-		ModelMapper modelMapper = new ModelMapper();
-		
-		AddressRest returnValue = modelMapper.map(addressDTO, AddressRest.class);
-		
-		return returnValue;
-	}
 
 	
 	/**
@@ -101,6 +69,7 @@ public class EmployeeController {
 	 * @return
 	 * @throws InvalidInputException 
 	 */
+	// http://localhost:8080/employees
 	@PostMapping(
 			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
 			)
@@ -109,25 +78,27 @@ public class EmployeeController {
 		ModelMapper modelMapper = new ModelMapper();
 		EmployeeDTO employeeDTO = modelMapper.map(employeeDetails, EmployeeDTO.class);
 		
-		userService.createEmployee(employeeDTO);
+		employeeService.createEmployee(employeeDTO);
 	}
 	
+	/**
+	 * Updates employee
+	 * @param id
+	 * @param userDetails
+	 */
 	@PutMapping(path="/{id}",
 			consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, 
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
 			)
-	public EmployeeRest updateUser(@PathVariable String id, @RequestBody EmployeeDetailsRequest userDetails) {
+	public void updateEmployee(@PathVariable String id, @RequestBody EmployeeDetailsRequest userDetails) {
 	
-		EmployeeRest returnValue = new EmployeeRest();
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(userDetails, employeeDTO);
 		
-		//EmployeeDTO updateUser = userService.updateUser(id, employeeDTO);
-		//BeanUtils.copyProperties(updateUser, returnValue);
+		employeeService.updateEmployee(id, employeeDTO);
 		
-		return returnValue;
 	}
-	
+	// http://localhost:8080/employees/:id
 	@DeleteMapping(path="/{id}", 
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
 	)
@@ -135,20 +106,21 @@ public class EmployeeController {
 		
 		OperationStatusModel returnValue = new OperationStatusModel();
 		
-		userService.deleteEmployee(id);
+		employeeService.deleteEmployee(id);
 		
 		returnValue.setOperationName(RequestOperationName.DELETE.name());
 		returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
 		return returnValue;
 	}
 	
+	// http://localhost:8080/employees
 	@GetMapping(produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	public List<EmployeeRest> getUsers(@RequestParam(value="page", defaultValue="0") int page,
 			@RequestParam(value="limit", defaultValue="1") int limit) {
 		
 		List<EmployeeRest> returnValue = new ArrayList<>();
 		
-		List<EmployeeDTO> users = userService.getEmployees(page, limit);
+		List<EmployeeDTO> users = employeeService.getEmployees(page, limit);
 		
 		for (EmployeeDTO employeeDTO : users) {
 			EmployeeRest userModel = new EmployeeRest();

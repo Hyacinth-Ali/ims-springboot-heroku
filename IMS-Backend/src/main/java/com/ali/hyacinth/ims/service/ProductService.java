@@ -7,12 +7,12 @@ public interface ProductService {
 	
 	void callCreateProduct() throws InvalidInputException;
 	
-	void createProduct(ProductDTO productDTO) throws InvalidInputException;
+	void createProduct(ProductDTO productDTO, String employeeId) throws InvalidInputException;
 	
-	void deleteProduct(String name) throws InvalidInputException;
+	void deleteProduct(String name, String employeeId) throws InvalidInputException;
 	
-	void updateProduct(String oldName, ProductDTO productDTO) throws InvalidInputException;
+	void updateProduct(String oldName, ProductDTO productDTO, String employeeId) throws InvalidInputException;
 	
-	void addProductItem(String name, int newQuantity) throws InvalidInputException;
+	void addProductItem(String name, int newQuantity, String employeeId) throws InvalidInputException;
 
 }

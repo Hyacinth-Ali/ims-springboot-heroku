@@ -1,7 +1,6 @@
 package com.ali.hyacinth.ims.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -295,21 +294,71 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public void updateQuantityTransaction(String productName, int quantity) throws InvalidInputException {
-		// TODO Auto-generated method stub
+	public void updateQuantityTransaction(String productName, int newQuantity, String transactionId) throws InvalidInputException {
+		
+		String error = "";
+		Transaction transaction = transactionRepository.findByTransactionId(transactionId);
+		Product product = productRepository.findByName(productName);
+		
+		if (transaction == null) {
+			error = "The transaction does not exist.";
+		} else if(product == null) {
+			error = "The product doesn't exist for this transaction.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
+		ProductTransaction pTransaction = productTransactionRepository.findByProduct(product);
+		int differenceQuantity = newQuantity - pTransaction.getQuantity();
+		
+		pTransaction.setQuantity(newQuantity);	
+		pTransaction.setPrice(newQuantity * product.getItemPrice());
+		product.setQuantity(product.getQuantity() - differenceQuantity);
+		setTransactionTotalAmount(transactionId);
+		transactionRepository.save(transaction);
 
 	}
 
 	@Override
-	public void updateAmountPaidTransaction(String id, float newAmount) throws InvalidInputException {
-		// TODO Auto-generated method stub
+	public void updateAmountPaidTransaction(String id, float newAmount, String transactionId) throws InvalidInputException {
+		
+		String error = "";
+		Transaction transaction = transactionRepository.findByTransactionId(transactionId);
+		
+		if (transaction == null) {
+			error = "The transaction does not exist.";
+		} 
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		transaction.setAmountPaid(transaction.getAmountPaid() + newAmount);
+		
+		transactionRepository.save(transaction);
 
 	}
 
 	@Override
-	public void deleteProductTransaction(String productName) throws InvalidInputException {
-		// TODO Auto-generated method stub
-
+	public void deleteProductTransaction(String productName, String transactionId) throws InvalidInputException {
+		
+		String error = "";
+		Transaction transaction = transactionRepository.findByTransactionId(transactionId);
+		Product product = productRepository.findByName(productName);
+		
+		if (transaction == null) {
+			error = "The transaction does not exist.";
+		} else if(product == null) {
+			error = "The product doesn't exist for this transaction.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		ProductTransaction pTransaction = productTransactionRepository.findByProduct(product);
+		int quantity = pTransaction.getQuantity();
+		product.setQuantity(product.getQuantity() + quantity);
+		productTransactionRepository.delete(pTransaction);
+		setTransactionTotalAmount(transactionId);
+		transactionRepository.save(transaction);
 	}
 
-}
+	}

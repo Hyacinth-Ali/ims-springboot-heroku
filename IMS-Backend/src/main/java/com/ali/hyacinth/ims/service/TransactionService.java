@@ -30,11 +30,11 @@ public interface TransactionService {
 	
 	void clearTransactionProducts(String transactionId) throws InvalidInputException;
 	
-	void updateQuantityTransaction(String productName, int quantity) throws InvalidInputException;
+	void updateQuantityTransaction(String productName, int newQuantity, String transactionId) throws InvalidInputException;
 	
-	void updateAmountPaidTransaction(String id, float newAmount) throws InvalidInputException;
+	void updateAmountPaidTransaction(String id, float newAmount, String transactionId) throws InvalidInputException;
 	
-	void deleteProductTransaction(String productName) throws InvalidInputException;
+	void deleteProductTransaction(String productName, String transactionId) throws InvalidInputException;
 
 }
 

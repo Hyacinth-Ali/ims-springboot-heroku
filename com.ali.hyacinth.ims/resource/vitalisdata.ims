@@ -883,8 +883,10 @@
   <products name="TUBE 410-18 R/O" itemPrice="11.0" quantity="2100"/>
   <products name="TUBE 450-12 R/O" itemPrice="11.0" quantity="1100"/>
   <managers person="//@persons.0" userName="vitalis" password="vitalisedu4132"/>
+  <managers person="//@persons.2" userName="ali" password="123"/>
   <persons name="Vitalis" roles="vitalis" sales="_LLbz4I-5EemngrpxdA6fmw _VowDII_AEemwpMBGcCYFVg"/>
   <persons name="Hyacinth" roles="cobra" purchases="_LLbz4I-5EemngrpxdA6fmw _VowDII_AEemwpMBGcCYFVg"/>
+  <persons name="Hyacinth" roles="ali"/>
   <customers person="//@persons.1" customerID="cobra"/>
   <transactions seller="//@persons.0" buyer="//@persons.1" date="2019-06-15T00:00:00.000-0400" id="_LLbz4I-5EemngrpxdA6fmw"/>
   <transactions seller="//@persons.0" buyer="//@persons.1" date="2019-06-15T00:00:00.000-0400" id="_VowDII_AEemwpMBGcCYFVg"/>
