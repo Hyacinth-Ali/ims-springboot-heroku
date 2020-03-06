@@ -1,11 +1,9 @@
 package com.ali.hyacinth.ims.ui.controller;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,16 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.service.AddressService;
 import com.ali.hyacinth.ims.service.EmployeeService;
-import com.ali.hyacinth.ims.shared.dto.AddressDTO;
 import com.ali.hyacinth.ims.shared.dto.EmployeeDTO;
 import com.ali.hyacinth.ims.ui.request.EmployeeDetailsRequest;
 import com.ali.hyacinth.ims.ui.request.EmployeeLoginRequest;
-import com.ali.hyacinth.ims.ui.response.AddressRest;
-import com.ali.hyacinth.ims.ui.response.ErrorMessages;
+import com.ali.hyacinth.ims.ui.response.EmployeeRest;
 import com.ali.hyacinth.ims.ui.response.OperationStatusModel;
 import com.ali.hyacinth.ims.ui.response.RequestOperationName;
 import com.ali.hyacinth.ims.ui.response.RequestOperationStatus;
-import com.ali.hyacinth.ims.ui.response.EmployeeRest;
 
 @RestController
 @RequestMapping("employees") // http://localhost:8080/employees

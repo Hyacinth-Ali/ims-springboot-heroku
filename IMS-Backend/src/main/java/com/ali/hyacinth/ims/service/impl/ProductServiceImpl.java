@@ -1,5 +1,8 @@
 package com.ali.hyacinth.ims.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,12 +45,14 @@ public class ProductServiceImpl implements ProductService{
 		
 		Employee employee = employeeRepository.findByEmployeeId(employeeId);
 		boolean loggedIn = false;
+		if (employee == null) {
+			throw new InvalidInputException("An employee must log in.");
+		}
 		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
-			if (e.equals(employee)) {
+			if (e.getUserName().equals(employee.getUserName())) {
 				loggedIn = true;
 			}
 		}
-		
 		String error = "";
 		if (!loggedIn) {
 			error = "An employee must log in before creating a product.";
@@ -72,7 +77,11 @@ public class ProductServiceImpl implements ProductService{
 		String publicProductId = utils.generateEmployeeId(30);
 		newProduct.setProductId(publicProductId);
 		
-		productRepository.save(newProduct);
+		try {
+			productRepository.save(newProduct);
+		} catch (Exception e) {
+			throw new InvalidInputException("Error!, seems the name already exist");
+		}
 		
 		
 	}
@@ -86,8 +95,11 @@ public class ProductServiceImpl implements ProductService{
 		
 		Employee employee = employeeRepository.findByEmployeeId(employeeId);
 		boolean loggedIn = false;
+		if (employee == null) {
+			throw new InvalidInputException("An employee must log in.");
+		}
 		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
-			if (e.equals(employee)) {
+			if (e.getUserName().equals(employee.getUserName())) {
 				loggedIn = true;
 			}
 		}
@@ -106,6 +118,8 @@ public class ProductServiceImpl implements ProductService{
 		Product product = productRepository.findByName(name);
 		if (product != null) {
 			productRepository.delete(product);
+		} else {
+			throw new InvalidInputException("The product does not exist.");
 		}
 		
 	}
@@ -118,12 +132,14 @@ public class ProductServiceImpl implements ProductService{
 		
 		Employee employee = employeeRepository.findByEmployeeId(employeeId);
 		boolean loggedIn = false;
+		if (employee == null) {
+			throw new InvalidInputException("An employee must log in.");
+		}
 		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
-			if (e.equals(employee)) {
+			if (e.getUserName().equals(employee.getUserName())) {
 				loggedIn = true;
 			}
 		}
-		
 		String error = "";
 		if (!loggedIn) {
 			error = "An employee must log in before updating a product.";
@@ -152,19 +168,72 @@ public class ProductServiceImpl implements ProductService{
 			product.setQuantity(productDTO.getQuantity());
 		}
 		
-		productRepository.save(product);
+		try {
+			productRepository.save(product);
+		} catch (Exception e) {
+			throw new InvalidInputException("Error!, seems the name already exist or the product does not exist");
+		}
 		
+	}
+	
+	/**
+	 * Get products
+	 */
+	public List<ProductDTO> getProducts(String employeeId) {
+		
+		List<ProductDTO> returnValue = new ArrayList<ProductDTO>();
+		
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		boolean loggedIn = false;
+		if (employee == null) {
+			throw new InvalidInputException("An employee must log in.");
+		}
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.getUserName().equals(employee.getUserName())) {
+				loggedIn = true;
+			}
+		}
+		if (!loggedIn) {
+			throw new InvalidInputException("Error! an employee must log in..");
+		}  
+		ModelMapper modelMapper = new ModelMapper();
+		Iterable<Product> products = productRepository.findAll();
+
+		for (Product p : products) {
+			returnValue.add(modelMapper.map(p, ProductDTO.class));
+		}
+		return returnValue;
 	}
 
 	/**
-	 * Adds item(s) to an existing product, this is not used for now
+	 * Adds item(s) to an existing product
 	 * @param name of the product
 	 * @param quantity of the product;
 	 */
 	@Override
 	public void addProductItem(String name, int newQuantity, String employeeId) throws InvalidInputException {
 		
+		Employee employee = employeeRepository.findByEmployeeId(employeeId);
+		boolean loggedIn = false;
+		if (employee == null) {
+			throw new InvalidInputException("An employee must log in.");
+		}
+		for (Employee e : ImsBackendApplication.getCurrentEmployees()) {
+			if (e.getUserName().equals(employee.getUserName())) {
+				loggedIn = true;
+			}
+		}
+		
 		String error = "";
+		if (!loggedIn) {
+			error = "An employee must log in before adding product items.";
+		} else if (!employee.isManager()) {
+			error = "A manager is required to add product items.";
+		} 
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		if (name == null || name.length() == 0) {
 			error = "The name of a product cannot be empty.";
 		}
@@ -177,9 +246,12 @@ public class ProductServiceImpl implements ProductService{
 		Product product = productRepository.findByName(name);
 		if (product != null) {
 			product.setQuantity(product.getQuantity() + newQuantity);
+			productRepository.save(product);
+		} else {
+			throw new InvalidInputException("The product does not exist.");
 		}
 		
-		productRepository.save(product);	
+			
 	}
 
 }

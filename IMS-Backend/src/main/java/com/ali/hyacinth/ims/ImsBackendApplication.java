@@ -23,7 +23,7 @@ public class ImsBackendApplication {
 	private static List<Transaction> currentTransactions; 
 
 	public static void main(String[] args) {
-		
+		init();
 		SpringApplication.run(ImsBackendApplication.class, args);
 	}
 	

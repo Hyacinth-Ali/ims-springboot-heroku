@@ -75,8 +75,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 		String publicUserId = utils.generateEmployeeId(30);
 		employee.setEmployeeId(publicUserId);
 		employee.setEncryptedPassword("testpassword");
+		employee.setManager(true);
 		
-		employeeRepository.save(employee);
+		try {
+			employeeRepository.save(employee);
+		} catch (Exception e) {
+			throw new InvalidInputException(e.getMessage());
+		}
 
 	}
 

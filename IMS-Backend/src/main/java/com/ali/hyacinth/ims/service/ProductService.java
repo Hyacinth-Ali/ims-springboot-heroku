@@ -1,5 +1,7 @@
 package com.ali.hyacinth.ims.service;
 
+import java.util.List;
+
 import com.ali.hyacinth.ims.exceptions.InvalidInputException;
 import com.ali.hyacinth.ims.shared.dto.ProductDTO;
 
@@ -14,5 +16,7 @@ public interface ProductService {
 	void updateProduct(String oldName, ProductDTO productDTO, String employeeId) throws InvalidInputException;
 	
 	void addProductItem(String name, int newQuantity, String employeeId) throws InvalidInputException;
+	
+	List<ProductDTO> getProducts(String employeeId);
 
 }
